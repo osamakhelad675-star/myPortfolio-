@@ -601,7 +601,7 @@
             const ctx = canvas.getContext('2d');
 
             let nodes = [];
-            let edges = []; // { from, to }
+            let edges = [];
             let packets = [];
             const PACKET_COUNT = 18;
             const NODE_RADIUS = 2.5;
@@ -616,7 +616,6 @@
             }
             window.addEventListener('resize', resizeCanvas);
 
-            // Track mouse
             document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
             document.addEventListener('mouseleave', () => { mouseX = -500; mouseY = -500; });
             document.addEventListener('touchmove', e => { if(e.touches.length>0) { mouseX=e.touches[0].clientX; mouseY=e.touches[0].clientY; } }, {passive:true});
@@ -630,7 +629,6 @@
                 const offsetX = (canvas.width - (cols-1)*GRID_SPACING)/2;
                 const offsetY = (canvas.height - (rows-1)*GRID_SPACING)/2;
 
-                // Create nodes with slight random jitter
                 for (let r=0; r<rows; r++) {
                     for (let c=0; c<cols; c++) {
                         let x = offsetX + c*GRID_SPACING + (Math.random()-0.5)*10;
@@ -644,7 +642,6 @@
                     }
                 }
 
-                // Build edges: connect each node to right and bottom neighbour
                 for (let r=0; r<rows; r++) {
                     for (let c=0; c<cols; c++) {
                         const idx = r*cols + c;
@@ -653,7 +650,6 @@
                     }
                 }
 
-                // Initialize packets
                 initPackets();
             }
 
@@ -670,7 +666,7 @@
                         to: edge.to,
                         x: fromNode.x,
                         y: fromNode.y,
-                        progress: Math.random(), // 0..1
+                        progress: Math.random(),
                         speed: 0.002 + Math.random()*0.006,
                         edgeIdx: edgeIdx
                     });
@@ -680,14 +676,13 @@
             function animate() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-                // Update nodes with subtle floating motion
                 const time = Date.now() * 0.001;
                 nodes.forEach(node => {
                     node.x = node.baseX + Math.sin(time + node.pulse) * 1.8;
                     node.y = node.baseY + Math.cos(time + node.pulse*1.3) * 1.8;
                 });
 
-                // Draw edges (connections)
+                // Edges
                 ctx.save();
                 ctx.strokeStyle = 'rgba(59,127,255,0.16)';
                 ctx.lineWidth = 0.7;
@@ -702,9 +697,8 @@
                 });
                 ctx.restore();
 
-                // Draw nodes
+                // Nodes
                 nodes.forEach(node => {
-                    // Mouse proximity effect
                     const dx = node.x - mouseX;
                     const dy = node.y - mouseY;
                     const distToMouse = Math.sqrt(dx*dx+dy*dy);
@@ -719,7 +713,6 @@
                     const size = NODE_RADIUS + glowFactor * 1.8;
 
                     ctx.save();
-                    // Outer glow
                     const grad = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, size*4);
                     grad.addColorStop(0, `rgba(79,143,255,${alpha*0.6})`);
                     grad.addColorStop(1, 'transparent');
@@ -728,13 +721,11 @@
                     ctx.arc(node.x, node.y, size*4, 0, Math.PI*2);
                     ctx.fill();
 
-                    // Core
                     ctx.fillStyle = `rgba(180,215,255,${alpha})`;
                     ctx.beginPath();
                     ctx.arc(node.x, node.y, size, 0, Math.PI*2);
                     ctx.fill();
 
-                    // Highlight if near mouse
                     if (glowFactor > 0.2) {
                         ctx.fillStyle = `rgba(255,255,255,${glowFactor*0.7})`;
                         ctx.beginPath();
@@ -744,11 +735,10 @@
                     ctx.restore();
                 });
 
-                // Update & draw data packets
+                // Packets
                 packets.forEach(packet => {
                     const edge = edges[packet.edgeIdx];
                     if (!edge || !nodes[edge.from] || !nodes[edge.to]) {
-                        // Reassign random edge
                         if (edges.length > 0) {
                             const newIdx = Math.floor(Math.random()*edges.length);
                             packet.edgeIdx = newIdx;
@@ -762,7 +752,6 @@
                     packet.progress += packet.speed;
                     if (packet.progress >= 1.0) {
                         packet.progress = 0;
-                        // Move to a new random edge occasionally
                         if (Math.random() < 0.3 && edges.length > 0) {
                             const newIdx = Math.floor(Math.random()*edges.length);
                             packet.edgeIdx = newIdx;
@@ -774,7 +763,6 @@
                     packet.x = from.x + (to.x - from.x) * t;
                     packet.y = from.y + (to.y - from.y) * t;
 
-                    // Draw packet
                     ctx.save();
                     const packetGlow = ctx.createRadialGradient(packet.x, packet.y, 0, packet.x, packet.y, 6);
                     packetGlow.addColorStop(0, 'rgba(180,230,255,0.9)');
@@ -791,7 +779,6 @@
                     ctx.restore();
                 });
 
-                // Occasionally add a new packet if some disappeared
                 if (packets.length < PACKET_COUNT && edges.length > 0) {
                     const edgeIdx = Math.floor(Math.random()*edges.length);
                     const edge = edges[edgeIdx];
@@ -811,8 +798,6 @@
 
             resizeCanvas();
             animate();
-
-            // Rebuild on resize handled by resizeCanvas event
 
             console.log('%c✨ أهلاً بك في بورتفوليو أسامة | Osama Portfolio %c🚀', 'color:#7eb8ff; font-size:1.1rem; font-weight:bold;', 'color:#fff;');
             console.log('%c🌐 شبكة تكنولوجيا تفاعلية | Tech Network Mesh Active', 'color:#4f8fff;');
