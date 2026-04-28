@@ -66,7 +66,7 @@
             inset: 0;
             z-index: 1;
             pointer-events: none;
-            opacity: 0.85;
+            opacity: 0.9;
         }
 
         /* ─────────────────────────────────────
@@ -110,19 +110,10 @@
         }
 
         @keyframes orbFloat {
-            0%,
-            100% {
-                transform: translate(0, 0) scale(1);
-            }
-            25% {
-                transform: translate(60px, -50px) scale(1.1);
-            }
-            50% {
-                transform: translate(-30px, 40px) scale(0.9);
-            }
-            75% {
-                transform: translate(-50px, -30px) scale(1.05);
-            }
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(60px, -50px) scale(1.1); }
+            50% { transform: translate(-30px, 40px) scale(0.9); }
+            75% { transform: translate(-50px, -30px) scale(1.05); }
         }
 
         /* Subtle grid overlay */
@@ -160,8 +151,6 @@
             padding: 50px 20px 40px;
             margin-bottom: 30px;
         }
-
-        /* Photo container with glow rings */
         .hero-photo-wrapper {
             position: relative;
             width: 170px;
@@ -183,11 +172,7 @@
             filter: blur(18px);
             z-index: 0;
         }
-        @keyframes glowSpin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
+        @keyframes glowSpin { to { transform: rotate(360deg); } }
         .hero-photo-ring {
             position: absolute;
             inset: -8px;
@@ -197,15 +182,8 @@
             animation: ringPulse 3s ease-in-out infinite;
         }
         @keyframes ringPulse {
-            0%,
-            100% {
-                border-color: rgba(255, 255, 255, 0.12);
-                box-shadow: 0 0 20px rgba(59, 127, 255, 0.2);
-            }
-            50% {
-                border-color: rgba(255, 255, 255, 0.28);
-                box-shadow: 0 0 40px rgba(59, 127, 255, 0.45);
-            }
+            0%, 100% { border-color: rgba(255, 255, 255, 0.12); box-shadow: 0 0 20px rgba(59, 127, 255, 0.2); }
+            50% { border-color: rgba(255, 255, 255, 0.28); box-shadow: 0 0 40px rgba(59, 127, 255, 0.45); }
         }
         .hero-photo {
             position: relative;
@@ -232,7 +210,6 @@
         .hero-photo .photo-placeholder {
             font-size: 62px;
             color: rgba(255, 255, 255, 0.55);
-            transition: var(--transition-soft);
             position: absolute;
             pointer-events: none;
         }
@@ -244,8 +221,6 @@
             border-color: rgba(255, 255, 255, 0.35);
             box-shadow: 0 0 55px rgba(59, 127, 255, 0.55);
         }
-
-        /* Hero text */
         .hero-name {
             font-size: 2.8rem;
             font-weight: 800;
@@ -271,8 +246,6 @@
             max-width: 500px;
             margin-bottom: 24px;
         }
-
-        /* Social Icons */
         .social-icons {
             display: flex;
             gap: 14px;
@@ -294,37 +267,16 @@
             font-size: 1.2rem;
             text-decoration: none;
             transition: var(--transition-smooth);
-            position: relative;
         }
         .social-icon:hover {
             transform: translateY(-5px);
             border-color: var(--glass-border-hover);
             box-shadow: var(--shadow-card-hover);
         }
-        .social-icon.linkedin:hover {
-            color: #0a66c2;
-            background: rgba(10, 102, 194, 0.15);
-            border-color: rgba(10, 102, 194, 0.5);
-            box-shadow: 0 8px 30px rgba(10, 102, 194, 0.4);
-        }
-        .social-icon.tiktok:hover {
-            color: #00f2ea;
-            background: rgba(0, 242, 234, 0.12);
-            border-color: rgba(0, 242, 234, 0.45);
-            box-shadow: 0 8px 30px rgba(0, 242, 234, 0.35);
-        }
-        .social-icon.facebook:hover {
-            color: #1877f2;
-            background: rgba(24, 119, 242, 0.15);
-            border-color: rgba(24, 119, 242, 0.5);
-            box-shadow: 0 8px 30px rgba(24, 119, 242, 0.4);
-        }
-        .social-icon.whatsapp:hover {
-            color: #25d366;
-            background: rgba(37, 211, 102, 0.15);
-            border-color: rgba(37, 211, 102, 0.5);
-            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
-        }
+        .social-icon.linkedin:hover { color: #0a66c2; background: rgba(10,102,194,0.15); border-color: rgba(10,102,194,0.5); box-shadow: 0 8px 30px rgba(10,102,194,0.4); }
+        .social-icon.tiktok:hover { color: #00f2ea; background: rgba(0,242,234,0.12); border-color: rgba(0,242,234,0.45); box-shadow: 0 8px 30px rgba(0,242,234,0.35); }
+        .social-icon.facebook:hover { color: #1877f2; background: rgba(24,119,242,0.15); border-color: rgba(24,119,242,0.5); box-shadow: 0 8px 30px rgba(24,119,242,0.4); }
+        .social-icon.whatsapp:hover { color: #25d366; background: rgba(37,211,102,0.15); border-color: rgba(37,211,102,0.5); box-shadow: 0 8px 30px rgba(37,211,102,0.4); }
 
         /* ─────────────────────────────────────
            SECTION TITLES
@@ -334,10 +286,10 @@
             font-weight: 700;
             margin-bottom: 28px;
             text-align: center;
-            position: relative;
             display: inline-block;
             color: var(--white-soft);
             letter-spacing: 0.5px;
+            position: relative;
         }
         .section-title::after {
             content: '';
@@ -352,23 +304,13 @@
             animation: titleLine 3s ease-in-out infinite;
         }
         @keyframes titleLine {
-            0%,
-            100% {
-                width: 50px;
-                opacity: 0.8;
-            }
-            50% {
-                width: 80px;
-                opacity: 1;
-            }
+            0%, 100% { width: 50px; opacity: 0.8; }
+            50% { width: 80px; opacity: 1; }
         }
-        .section-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
+        .section-header { text-align: center; margin-bottom: 40px; }
 
         /* ─────────────────────────────────────
-           GLASS CARD BASE
+           GLASS CARDS
         ───────────────────────────────────── */
         .glass-card {
             background: var(--glass-bg);
@@ -385,959 +327,497 @@
         .glass-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg,
-                    transparent,
-                    rgba(255, 255, 255, 0.08),
-                    rgba(255, 255, 255, 0.15),
-                    rgba(255, 255, 255, 0.08),
-                    transparent);
+            top: 0; left: 0; right: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), rgba(255,255,255,0.15), rgba(255,255,255,0.08), transparent);
             opacity: 0;
             transition: opacity 0.4s ease;
         }
-        .glass-card:hover::before {
-            opacity: 1;
-        }
+        .glass-card:hover::before { opacity: 1; }
         .glass-card:hover {
             transform: translateY(-8px);
             border-color: var(--glass-border-hover);
             box-shadow: var(--shadow-card-hover);
             background: var(--glass-bg-hover);
         }
-
-        /* Cert cards – clickable */
-        .cert-card {
-            cursor: pointer;
-            transition: var(--transition-smooth);
-        }
+        .cert-card { cursor: pointer; }
         .cert-card::after {
             content: '\f06e';
             font-family: 'Font Awesome 6 Free';
             font-weight: 900;
             position: absolute;
-            top: 14px;
-            left: 18px;
+            top: 14px; left: 18px;
             font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.2);
+            color: rgba(255,255,255,0.2);
             transition: var(--transition-smooth);
             pointer-events: none;
         }
-        .cert-card:hover::after {
-            color: rgba(255, 255, 255, 0.7);
-            transform: scale(1.2);
-        }
-
-        /* Card icon */
+        .cert-card:hover::after { color: rgba(255,255,255,0.7); transform: scale(1.2); }
         .card-icon {
-            width: 50px;
-            height: 50px;
+            width: 50px; height: 50px;
             border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: flex; align-items: center; justify-content: center;
             font-size: 1.4rem;
             margin-bottom: 16px;
-            background: rgba(59, 127, 255, 0.12);
+            background: rgba(59,127,255,0.12);
             color: var(--blue-light);
             transition: var(--transition-smooth);
-            flex-shrink: 0;
         }
-        .glass-card:hover .card-icon {
-            background: rgba(59, 127, 255, 0.22);
-            color: #ffffff;
-            box-shadow: 0 4px 20px rgba(59, 127, 255, 0.35);
-            transform: scale(1.05);
-        }
-        .card-title {
-            font-size: 1.05rem;
-            font-weight: 700;
-            margin-bottom: 6px;
-            color: var(--white-soft);
-            transition: var(--transition-soft);
-        }
-        .card-subtitle {
-            font-size: 0.85rem;
-            color: var(--white-muted);
-            line-height: 1.5;
-        }
+        .glass-card:hover .card-icon { background: rgba(59,127,255,0.22); color: #fff; box-shadow: 0 4px 20px rgba(59,127,255,0.35); transform: scale(1.05); }
+        .card-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; color: var(--white-soft); }
+        .card-subtitle { font-size: 0.85rem; color: var(--white-muted); line-height: 1.5; }
 
-        /* ─────────────────────────────────────
-           LIGHTBOX MODAL
-        ───────────────────────────────────── */
+        /* Lightbox */
         .lightbox-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 9999;
-            background: rgba(0, 0, 0, 0.85);
+            position: fixed; inset: 0; z-index: 9999;
+            background: rgba(0,0,0,0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            pointer-events: none;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none;
             transition: opacity 0.35s ease;
         }
-        .lightbox-overlay.active {
-            opacity: 1;
-            pointer-events: all;
-        }
+        .lightbox-overlay.active { opacity: 1; pointer-events: all; }
         .lightbox-content {
-            position: relative;
-            max-width: 90vw;
-            max-height: 85vh;
+            position: relative; max-width: 90vw; max-height: 85vh;
             background: var(--bg-surface);
             border: 1px solid var(--glass-border-hover);
             border-radius: var(--radius-lg);
             padding: 16px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 80px rgba(59, 127, 255, 0.2);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 80px rgba(59,127,255,0.2);
             transform: scale(0.9);
-            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            transition: transform 0.4s cubic-bezier(0.25,0.8,0.25,1.2);
         }
-        .lightbox-overlay.active .lightbox-content {
-            transform: scale(1);
-        }
-        .lightbox-content img {
-            max-width: 100%;
-            max-height: 75vh;
-            border-radius: 12px;
-            object-fit: contain;
-            display: block;
-        }
+        .lightbox-overlay.active .lightbox-content { transform: scale(1); }
+        .lightbox-content img { max-width: 100%; max-height: 75vh; border-radius: 12px; display: block; }
         .lightbox-close {
-            position: absolute;
-            top: -44px;
-            right: 0;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            color: #fff;
-            font-size: 1.1rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            position: absolute; top: -44px; right: 0;
+            width: 40px; height: 40px; border-radius: 50%;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.25);
+            color: #fff; font-size: 1.1rem; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
             transition: var(--transition-smooth);
-            z-index: 2;
         }
-        .lightbox-close:hover {
-            background: rgba(255, 60, 60, 0.25);
-            border-color: rgba(255, 100, 100, 0.6);
-            box-shadow: 0 6px 24px rgba(255, 50, 50, 0.35);
-            transform: rotate(90deg);
-        }
-        .lightbox-caption {
-            position: absolute;
-            bottom: -40px;
-            left: 0;
-            right: 0;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
+        .lightbox-close:hover { background: rgba(255,60,60,0.25); border-color: rgba(255,100,100,0.6); box-shadow: 0 6px 24px rgba(255,50,50,0.35); transform: rotate(90deg); }
+        .lightbox-caption { position: absolute; bottom: -40px; left:0; right:0; text-align: center; color: rgba(255,255,255,0.7); font-size:0.85rem; }
 
-        /* ─────────────────────────────────────
-           GRID LAYOUTS
-        ───────────────────────────────────── */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-        }
-        .cards-grid.skills-grid {
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 16px;
-        }
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+        .cards-grid.skills-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+        .section-block { margin-bottom: 50px; }
+        .about-card { max-width: 750px; margin: 0 auto; text-align: center; font-size: 1.05rem; line-height: 1.9; color: var(--white-muted); }
+        .about-card .highlight { color: var(--blue-light); font-weight: 600; }
+        .education-card { max-width: 500px; margin: 0 auto; text-align: center; display: flex; align-items: center; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .education-card .card-icon { margin-bottom: 0; }
+        .site-footer { text-align: center; padding: 30px 20px; color: rgba(255,255,255,0.35); font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 30px; }
+        .site-footer span { color: var(--blue-light); }
 
-        /* ─────────────────────────────────────
-           SECTIONS SPACING
-        ───────────────────────────────────── */
-        .section-block {
-            margin-bottom: 50px;
-        }
+        .reveal { opacity: 0; transform: translateY(35px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .reveal.revealed { opacity: 1; transform: translateY(0); }
 
-        /* About / Objective block */
-        .about-card {
-            max-width: 750px;
-            margin: 0 auto;
-            text-align: center;
-            font-size: 1.05rem;
-            line-height: 1.9;
-            color: var(--white-muted);
-        }
-        .about-card .highlight {
-            color: var(--blue-light);
-            font-weight: 600;
-        }
-
-        /* Education card */
-        .education-card {
-            max-width: 500px;
-            margin: 0 auto;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .education-card .card-icon {
-            margin-bottom: 0;
-        }
-
-        /* ─────────────────────────────────────
-           FOOTER
-        ───────────────────────────────────── */
-        .site-footer {
-            text-align: center;
-            padding: 30px 20px;
-            color: rgba(255, 255, 255, 0.35);
-            font-size: 0.85rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            margin-top: 30px;
-        }
-        .site-footer span {
-            color: var(--blue-light);
-        }
-
-        /* ─────────────────────────────────────
-           REVEAL ANIMATION (JS-driven)
-        ───────────────────────────────────── */
-        .reveal {
-            opacity: 0;
-            transform: translateY(35px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
-        }
-        .reveal.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ─────────────────────────────────────
-           RESPONSIVE
-        ───────────────────────────────────── */
         @media (max-width: 768px) {
-            .hero-name {
-                font-size: 2rem;
-            }
-            .hero-title {
-                font-size: 1rem;
-            }
-            .hero-photo-wrapper {
-                width: 130px;
-                height: 130px;
-            }
-            .hero-photo .photo-placeholder {
-                font-size: 46px;
-            }
-            .section-title {
-                font-size: 1.3rem;
-            }
-            .cards-grid {
-                grid-template-columns: 1fr;
-                gap: 14px;
-            }
-            .cards-grid.skills-grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-                gap: 12px;
-            }
-            .glass-card {
-                padding: 18px 16px;
-                border-radius: var(--radius-md);
-            }
-            .social-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
-            }
-            .lightbox-content {
-                max-width: 95vw;
-                padding: 10px;
-            }
-            .lightbox-close {
-                top: -38px;
-                right: 4px;
-                width: 34px;
-                height: 34px;
-                font-size: 0.95rem;
-            }
-            .cert-card::after {
-                top: 10px;
-                left: 12px;
-                font-size: 0.7rem;
-            }
+            .hero-name { font-size: 2rem; }
+            .hero-title { font-size: 1rem; }
+            .hero-photo-wrapper { width: 130px; height: 130px; }
+            .section-title { font-size: 1.3rem; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .cards-grid.skills-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+            .glass-card { padding: 18px 16px; border-radius: var(--radius-md); }
+            .social-icon { width: 40px; height: 40px; font-size: 1rem; }
         }
-
         @media (max-width: 480px) {
-            .cards-grid.skills-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 10px;
-            }
-            .hero-name {
-                font-size: 1.6rem;
-            }
-            .main-container {
-                padding: 15px 10px 40px;
-            }
-            .hero {
-                padding: 30px 10px 25px;
-            }
+            .cards-grid.skills-grid { grid-template-columns: 1fr 1fr; }
+            .hero-name { font-size: 1.6rem; }
+            .main-container { padding: 15px 10px 40px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Background ambient orbs -->
     <div class="bg-orb bg-orb-1"></div>
     <div class="bg-orb bg-orb-2"></div>
     <div class="bg-orb bg-orb-3"></div>
     <div class="grid-overlay"></div>
 
-    <!-- ═══════════════════════════════
-         PARTICLE CANVAS
-         ═══════════════════════════════ -->
+    <!-- TECH NETWORK CANVAS -->
     <canvas id="particleCanvas" aria-hidden="true"></canvas>
 
-    <!-- ═══════════════════════════════
-         LIGHTBOX MODAL
-         ═══════════════════════════════ -->
+    <!-- LIGHTBOX -->
     <div class="lightbox-overlay" id="lightboxOverlay" aria-hidden="true">
-        <div class="lightbox-content" id="lightboxContent">
-            <button class="lightbox-close" id="lightboxClose" title="إغلاق" aria-label="إغلاق الصورة">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightboxClose" aria-label="إغلاق"><i class="fa-solid fa-xmark"></i></button>
             <img src="" alt="شهادة" id="lightboxImg">
             <span class="lightbox-caption" id="lightboxCaption"></span>
         </div>
     </div>
 
-    <!-- Main Content -->
     <div class="main-container">
 
-        <!-- ═══════════════════════════════
-             HERO SECTION
-             ═══════════════════════════════ -->
+        <!-- HERO -->
         <section class="hero reveal">
-            <!-- Photo -->
             <div class="hero-photo-wrapper">
                 <div class="hero-photo-glow"></div>
                 <div class="hero-photo-ring"></div>
                 <div class="hero-photo" id="heroPhotoContainer">
-                    <!--
-                    ╔══════════════════════════════════════╗
-                    ║  استبدل المسار أدناه بمسار صورتك     ║
-                    ║  Replace the src below with your     ║
-                    ║  own image path (مثال: osama.jpg)    ║
-                    ╚══════════════════════════════════════╝
-                    -->
-                    <img src="osama.jpg"
-                    alt="أسامة"
-                    id="heroImg"
-                    onerror="this.style.display='none'; document.getElementById('photoPlaceholder').style.display='flex';"
-                    onload="this.style.display='block'; document.getElementById('photoPlaceholder').style.display='none';"
-                    style="display:block;">
-                    <i class="fa-solid fa-user photo-placeholder"
-                    id="photoPlaceholder"
-                aria-label="صورة شخصية"
-                style="display:none; align-items:center; justify-content:center; width:100%; height:100%;"></i>
+                    <img src="osama.jpg" alt="أسامة" id="heroImg"
+                         onerror="this.style.display='none'; document.getElementById('photoPlaceholder').style.display='flex';"
+                         onload="this.style.display='block'; document.getElementById('photoPlaceholder').style.display='none';"
+                         style="display:block;">
+                    <i class="fa-solid fa-user photo-placeholder" id="photoPlaceholder" style="display:none; align-items:center; justify-content:center; width:100%; height:100%;"></i>
+                </div>
             </div>
-        </div>
+            <h1 class="hero-name">أسامة</h1>
+            <p class="hero-title">تطوير الأعمال · التسويق · المبيعات · التجارة الإلكترونية</p>
+            <p class="hero-subtitle">طالب بكلية التجارة، أحول المعرفة إلى نتائج عملية على أرض الواقع</p>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/your-linkedin" target="_blank" rel="noopener" class="social-icon linkedin" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://www.tiktok.com/@your-tiktok" target="_blank" rel="noopener" class="social-icon tiktok" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://www.facebook.com/your-facebook" target="_blank" rel="noopener" class="social-icon facebook" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://wa.me/201000000000" target="_blank" rel="noopener" class="social-icon whatsapp" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </section>
 
-        <!-- Name & Title -->
-        <h1 class="hero-name">أسامة</h1>
-        <p class="hero-title">تطوير الأعمال · التسويق · المبيعات · التجارة الإلكترونية</p>
-        <p class="hero-subtitle">طالب بكلية التجارة، أحول المعرفة إلى نتائج عملية على أرض الواقع</p>
+        <!-- OBJECTIVE -->
+        <section class="section-block reveal">
+            <div class="section-header"><h2 class="section-title">الهدف الوظيفي</h2></div>
+            <div class="glass-card about-card">
+                <p>أبحث عن فرصة <span class="highlight">عمل أو تدريب</span> في مجالات <span class="highlight">تطوير الأعمال</span>، <span class="highlight">التسويق</span>، أو <span class="highlight">التجارة الإلكترونية</span>، حيث أستطيع <span class="highlight">تقديم قيمة حقيقية</span> وتطوير مهاراتي المهنية في بيئة عملية محفزة تدفعني للنمو والتطور المستمر.</p>
+            </div>
+        </section>
 
-        <!-- Social Media Icons -->
-        <div class="social-icons">
-            <!-- LinkedIn -->
-            <a href="https://www.linkedin.com/in/your-linkedin" target="_blank" rel="noopener noreferrer"
-            class="social-icon linkedin" title="LinkedIn" aria-label="LinkedIn">
-            <i class="fa-brands fa-linkedin-in"></i>
-        </a>
-        <!-- TikTok -->
-        <a href="https://www.tiktok.com/@your-tiktok" target="_blank" rel="noopener noreferrer"
-        class="social-icon tiktok" title="TikTok" aria-label="TikTok">
-        <i class="fa-brands fa-tiktok"></i>
-    </a>
-    <!-- Facebook -->
-    <a href="https://www.facebook.com/your-facebook" target="_blank" rel="noopener noreferrer"
-    class="social-icon facebook" title="Facebook" aria-label="Facebook">
-    <i class="fa-brands fa-facebook-f"></i>
-</a>
-<!-- WhatsApp -->
-<a href="https://wa.me/201000000000" target="_blank" rel="noopener noreferrer"
-class="social-icon whatsapp" title="WhatsApp" aria-label="WhatsApp">
-<i class="fa-brands fa-whatsapp"></i>
-</a>
-</div>
-</section>
+        <!-- EDUCATION -->
+        <section class="section-block reveal">
+            <div class="section-header"><h2 class="section-title">التعليم</h2></div>
+            <div class="glass-card education-card">
+                <div class="card-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                <div><h3 class="card-title">طالب في كلية تجارة</h3><p class="card-subtitle">كلية التجارة · تخصص إدارة الأعمال</p></div>
+            </div>
+        </section>
 
-<!-- ═══════════════════════════════
-    CAREER OBJECTIVE
-    ═══════════════════════════════ -->
-<section class="section-block reveal">
-<div class="section-header">
-    <h2 class="section-title">الهدف الوظيفي</h2>
-</div>
-<div class="glass-card about-card">
-    <p>
-        أبحث عن فرصة <span class="highlight">عمل أو تدريب</span> في مجالات
-        <span class="highlight">تطوير الأعمال</span>،
-        <span class="highlight">التسويق</span>، أو
-        <span class="highlight">التجارة الإلكترونية</span>،
-        حيث أستطيع <span class="highlight">تقديم قيمة حقيقية</span> وتطوير مهاراتي المهنية
-        في بيئة عملية محفزة تدفعني للنمو والتطور المستمر.
-    </p>
-</div>
-</section>
+        <!-- CERTIFICATES (clickable) -->
+        <section class="section-block reveal">
+            <div class="section-header">
+                <h2 class="section-title">الشهادات والتدريبات</h2>
+                <p style="color:rgba(255,255,255,0.4); font-size:0.8rem; margin-top:4px;"><i class="fa-solid fa-hand-pointer"></i> اضغط على أي شهادة لعرض الصورة</p>
+            </div>
+            <div class="cards-grid">
+                <div class="glass-card cert-card" data-cert-img="cert-business-development.jpg" data-cert-name="شهادة تطوير الأعمال">
+                    <div class="card-icon"><i class="fa-solid fa-rocket"></i></div>
+                    <h3 class="card-title">تطوير الأعمال</h3><p class="card-subtitle">Business Development Certification</p>
+                </div>
+                <div class="glass-card cert-card" data-cert-img="cert-marketing.jpg" data-cert-name="شهادة التسويق">
+                    <div class="card-icon"><i class="fa-solid fa-bullhorn"></i></div>
+                    <h3 class="card-title">التسويق</h3><p class="card-subtitle">Marketing Certification</p>
+                </div>
+                <div class="glass-card cert-card" data-cert-img="cert-sales.jpg" data-cert-name="شهادة المبيعات">
+                    <div class="card-icon"><i class="fa-solid fa-handshake"></i></div>
+                    <h3 class="card-title">المبيعات</h3><p class="card-subtitle">Sales Certification</p>
+                </div>
+                <div class="glass-card cert-card" data-cert-img="cert-business-fundamentals.jpg" data-cert-name="أساسيات إدارة الأعمال">
+                    <div class="card-icon"><i class="fa-solid fa-briefcase"></i></div>
+                    <h3 class="card-title">أساسيات إدارة الأعمال</h3><p class="card-subtitle">Business Fundamentals Certification</p>
+                </div>
+                <div class="glass-card cert-card" data-cert-img="cert-feasibility-study.jpg" data-cert-name="دراسة الجدوى وتحليل السوق">
+                    <div class="card-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                    <h3 class="card-title">دراسة الجدوى وتحليل السوق</h3><p class="card-subtitle">Feasibility Study & Market Analysis Training</p>
+                </div>
+                <div class="glass-card cert-card" data-cert-img="cert-customer-experience.jpg" data-cert-name="إدارة تجربة العملاء">
+                    <div class="card-icon"><i class="fa-solid fa-face-smile"></i></div>
+                    <h3 class="card-title">إدارة تجربة العملاء</h3>
+                    <p class="card-subtitle">Customer Experience Management Certification</p>
+                </div>
+            </div>
+        </section>
 
-<!-- ═══════════════════════════════
-    EDUCATION
-    ═══════════════════════════════ -->
-<section class="section-block reveal">
-<div class="section-header">
-    <h2 class="section-title">التعليم</h2>
-</div>
-<div class="glass-card education-card">
-    <div class="card-icon">
-        <i class="fa-solid fa-graduation-cap"></i>
-    </div>
-    <div>
-        <h3 class="card-title">طالب في كلية تجارة</h3>
-        <p class="card-subtitle">كلية التجارة · تخصص إدارة الأعمال</p>
-    </div>
-</div>
-</section>
+        <!-- SKILLS -->
+        <section class="section-block reveal">
+            <div class="section-header"><h2 class="section-title">المهارات الأساسية</h2></div>
+            <div class="cards-grid skills-grid">
+                <div class="glass-card"><div class="card-icon"><i class="fa-solid fa-seedling"></i></div><h3 class="card-title">تطوير وتنمية المشاريع</h3><p class="card-subtitle">تنمية الشركات والمشاريع الناشئة</p></div>
+                <div class="glass-card"><div class="card-icon"><i class="fa-solid fa-file-lines"></i></div><h3 class="card-title">إعداد خطط تسويقية</h3><p class="card-subtitle">خطط تسويقية فعالة ومتكاملة</p></div>
+                <div class="glass-card"><div class="card-icon"><i class="fa-solid fa-handshake-simple"></i></div><h3 class="card-title">البيع والتفاوض</h3><p class="card-subtitle">مهارات البيع وإغلاق الصفقات</p></div>
+                <div class="glass-card"><div class="card-icon"><i class="fa-solid fa-chart-bar"></i></div><h3 class="card-title">دراسة السوق</h3><p class="card-subtitle">تحليل السوق والمنافسين</p></div>
+                <div class="glass-card"><div class="card-icon"><i class="fa-solid fa-clipboard-check"></i></div><h3 class="card-title">دراسات الجدوى</h3><p class="card-subtitle">إعداد دراسات جدوى احترافية</p></div>
+                <div class="glass-card"><div class="card-icon"><i class="fa-solid fa-arrow-trend-up"></i></div><h3 class="card-title">خطط النمو</h3><p class="card-subtitle">بناء خطط نمو للمشاريع الناشئة</p></div>
+                <div class="glass-card"><div class="card-icon"><i class="fa-solid fa-headset"></i></div><h3 class="card-title">خدمة العملاء</h3><p class="card-subtitle">إدارة علاقات العملاء</p></div>
+                <div class="glass-card"><div class="card-icon"><i class="fa-solid fa-brain"></i></div><h3 class="card-title">التفكير التحليلي</h3><p class="card-subtitle">حل المشكلات والتفكير التحليلي</p></div>
+            </div>
+        </section>
 
-<!-- ═══════════════════════════════
-    CERTIFICATIONS & TRAINING
-    ═══════════════════════════════ -->
-<section class="section-block reveal">
-<div class="section-header">
-    <h2 class="section-title">الشهادات والتدريبات</h2>
-    <p style="color:rgba(255,255,255,0.4); font-size:0.8rem; margin-top:4px;">
-        <i class="fa-solid fa-hand-pointer"></i> اضغط على أي شهادة لعرض الصورة
-    </p>
-</div>
-<div class="cards-grid">
-    <!-- 1. Business Development -->
-    <div class="glass-card cert-card"
-    data-cert-img="cert-business-development.jpg"
-    data-cert-name="شهادة تطوير الأعمال">
-    <div class="card-icon">
-        <i class="fa-solid fa-rocket"></i>
+        <footer class="site-footer reveal"><p>© 2025 <span>أسامة</span> · جميع الحقوق محفوظة · صُنع بحب وإتقان</p></footer>
     </div>
-    <h3 class="card-title">تطوير الأعمال</h3>
-    <p class="card-subtitle">Business Development Certification</p>
-</div>
-<!-- 2. Marketing -->
-<div class="glass-card cert-card"
-data-cert-img="cert-marketing.jpg"
-data-cert-name="شهادة التسويق">
-<div class="card-icon">
-    <i class="fa-solid fa-bullhorn"></i>
-</div>
-<h3 class="card-title">التسويق</h3>
-<p class="card-subtitle">Marketing Certification</p>
-</div>
-<!-- 3. Sales -->
-<div class="glass-card cert-card"
-data-cert-img="cert-sales.jpg"
-data-cert-name="شهادة المبيعات">
-<div class="card-icon">
-    <i class="fa-solid fa-handshake"></i>
-</div>
-<h3 class="card-title">المبيعات</h3>
-<p class="card-subtitle">Sales Certification</p>
-</div>
-<!-- 4. Business Fundamentals -->
-<div class="glass-card cert-card"
-data-cert-img="cert-business-fundamentals.jpg"
-data-cert-name="شهادة أساسيات إدارة الأعمال">
-<div class="card-icon">
-    <i class="fa-solid fa-briefcase"></i>
-</div>
-<h3 class="card-title">أساسيات إدارة الأعمال</h3>
-<p class="card-subtitle">Business Fundamentals Certification</p>
-</div>
-<!-- 5. Feasibility Study -->
-<div class="glass-card cert-card"
-data-cert-img="cert-feasibility-study.jpg"
-data-cert-name="شهادة دراسة الجدوى وتحليل السوق">
-<div class="card-icon">
-    <i class="fa-solid fa-magnifying-glass-chart"></i>
-</div>
-<h3 class="card-title">دراسة الجدوى وتحليل السوق</h3>
-<p class="card-subtitle">Feasibility Study & Market Analysis Training</p>
-</div>
-<!-- 6. Customer Experience Management -->
-<div class="glass-card cert-card"
-data-cert-img="cert-customer-experience.jpg"
-data-cert-name="شهادة إدارة تجربة العملاء">
-<div class="card-icon">
-    <i class="fa-solid fa-face-smile"></i>
-</div>
-<h3 class="card-title">إدارة تجربة العملاء</h3>
-<p class="card-subtitle">Customer Experience Management Certification</p>
-</div>
-</div>
-</section>
 
-<!-- ═══════════════════════════════
-    CORE SKILLS
-    ═══════════════════════════════ -->
-<section class="section-block reveal">
-<div class="section-header">
-    <h2 class="section-title">المهارات الأساسية</h2>
-</div>
-<div class="cards-grid skills-grid">
-    <!-- 1 -->
-    <div class="glass-card">
-        <div class="card-icon">
-            <i class="fa-solid fa-seedling"></i>
-        </div>
-        <h3 class="card-title">تطوير وتنمية المشاريع</h3>
-        <p class="card-subtitle">تنمية الشركات والمشاريع الناشئة</p>
-    </div>
-    <!-- 2 -->
-    <div class="glass-card">
-        <div class="card-icon">
-            <i class="fa-solid fa-file-lines"></i>
-        </div>
-        <h3 class="card-title">إعداد خطط تسويقية</h3>
-        <p class="card-subtitle">خطط تسويقية فعالة ومتكاملة</p>
-    </div>
-    <!-- 3 -->
-    <div class="glass-card">
-        <div class="card-icon">
-            <i class="fa-solid fa-handshake-simple"></i>
-        </div>
-        <h3 class="card-title">البيع والتفاوض</h3>
-        <p class="card-subtitle">مهارات البيع وإغلاق الصفقات</p>
-    </div>
-    <!-- 4 -->
-    <div class="glass-card">
-        <div class="card-icon">
-            <i class="fa-solid fa-chart-bar"></i>
-        </div>
-        <h3 class="card-title">دراسة السوق</h3>
-        <p class="card-subtitle">تحليل السوق والمنافسين</p>
-    </div>
-    <!-- 5 -->
-    <div class="glass-card">
-        <div class="card-icon">
-            <i class="fa-solid fa-clipboard-check"></i>
-        </div>
-        <h3 class="card-title">دراسات الجدوى</h3>
-        <p class="card-subtitle">إعداد دراسات جدوى احترافية</p>
-    </div>
-    <!-- 6 -->
-    <div class="glass-card">
-        <div class="card-icon">
-            <i class="fa-solid fa-arrow-trend-up"></i>
-        </div>
-        <h3 class="card-title">خطط النمو</h3>
-        <p class="card-subtitle">بناء خطط نمو للمشاريع الناشئة</p>
-    </div>
-    <!-- 7 -->
-    <div class="glass-card">
-        <div class="card-icon">
-            <i class="fa-solid fa-headset"></i>
-        </div>
-        <h3 class="card-title">خدمة العملاء</h3>
-        <p class="card-subtitle">إدارة علاقات العملاء</p>
-    </div>
-    <!-- 8 -->
-    <div class="glass-card">
-        <div class="card-icon">
-            <i class="fa-solid fa-brain"></i>
-        </div>
-        <h3 class="card-title">التفكير التحليلي</h3>
-        <p class="card-subtitle">حل المشكلات والتفكير التحليلي</p>
-    </div>
-</div>
-</section>
-
-<!-- ═══════════════════════════════
-    FOOTER
-    ═══════════════════════════════ -->
-<footer class="site-footer reveal">
-    <p>© 2025 <span>أسامة</span> · جميع الحقوق محفوظة · صُنع بحب وإتقان</p>
-</footer>
-</div>
-
-<!-- ═══════════════════════════════
-     JAVASCRIPT
-     ═══════════════════════════════ -->
-<script>
-    (function() {
-        // ── Intersection Observer for scroll-reveal animations ──
-        const revealElements = document.querySelectorAll('.reveal');
-
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px 0px -60px 0px',
-            threshold: 0.12
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('revealed');
-                    observer.unobserve(entry.target);
-                }
+    <script>
+        (function() {
+            // Reveal animations
+            const revealEls = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { if(entry.isIntersecting) { entry.target.classList.add('revealed'); observer.unobserve(entry.target); } });
+            }, { rootMargin: '0px 0px -60px 0px', threshold: 0.12 });
+            revealEls.forEach(el => observer.observe(el));
+            window.addEventListener('DOMContentLoaded', () => {
+                revealEls.forEach(el => { const rect = el.getBoundingClientRect(); if(rect.top < window.innerHeight && rect.bottom > 0) setTimeout(() => { el.classList.add('revealed'); observer.unobserve(el); }, 80); });
             });
-        }, observerOptions);
 
-        revealElements.forEach(el => observer.observe(el));
+            // Hero parallax glow
+            const heroWrapper = document.querySelector('.hero-photo-wrapper');
+            const glowRing = document.querySelector('.hero-photo-glow');
+            if(heroWrapper && glowRing && window.innerWidth > 768) {
+                heroWrapper.addEventListener('mousemove', (e) => {
+                    const rect = heroWrapper.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width/2, y = e.clientY - rect.top - rect.height/2;
+                    glowRing.style.transform = `translate(${x*0.08}px, ${y*0.08}px)`;
+                });
+                heroWrapper.addEventListener('mouseleave', () => { glowRing.style.transform = 'translate(0,0)'; glowRing.style.transition = 'transform 0.6s ease-out'; setTimeout(() => glowRing.style.transition = 'none', 600); });
+            }
 
-        // ── Manual trigger for elements already in view on load ──
-        window.addEventListener('DOMContentLoaded', () => {
-            revealElements.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight && rect.bottom > 0) {
-                    setTimeout(() => {
-                        el.classList.add('revealed');
-                        observer.unobserve(el);
-                    }, 80);
-                }
+            // Lightbox
+            const overlay = document.getElementById('lightboxOverlay');
+            const img = document.getElementById('lightboxImg');
+            const caption = document.getElementById('lightboxCaption');
+            const closeBtn = document.getElementById('lightboxClose');
+            function openLightbox(src, cap) { img.src=src; caption.textContent=cap||''; overlay.classList.add('active'); overlay.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+            function closeLightbox() { overlay.classList.remove('active'); overlay.setAttribute('aria-hidden','true'); document.body.style.overflow=''; setTimeout(() => { img.src=''; caption.textContent=''; }, 400); }
+            document.querySelectorAll('.cert-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const src = this.getAttribute('data-cert-img');
+                    const name = this.getAttribute('data-cert-name');
+                    if(src) openLightbox(src, name);
+                });
+                card.setAttribute('tabindex','0'); card.setAttribute('role','button');
+                card.addEventListener('keydown', (e) => { if(e.key==='Enter'||e.key===' ') { e.preventDefault(); const s=card.getAttribute('data-cert-img'); const n=card.getAttribute('data-cert-name'); if(s) openLightbox(s,n); } });
             });
-        });
-
-        // ── Subtle parallax glow follow on hero photo wrapper (desktop) ──
-        const heroWrapper = document.querySelector('.hero-photo-wrapper');
-        const glowRing = document.querySelector('.hero-photo-glow');
-
-        if (heroWrapper && glowRing && window.innerWidth > 768) {
-            heroWrapper.addEventListener('mousemove', function(e) {
-                const rect = heroWrapper.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-                const offsetX = x * 0.08;
-                const offsetY = y * 0.08;
-                glowRing.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+            closeBtn.addEventListener('click', closeLightbox);
+            overlay.addEventListener('click', (e) => { if(e.target===overlay) closeLightbox(); });
+            document.addEventListener('keydown', (e) => { if(e.key==='Escape' && overlay.classList.contains('active')) closeLightbox(); });
+            img.addEventListener('error', function() {
+                this.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200"><rect width="300" height="200" fill="%231a1a30" rx="12"/><text x="150" y="90" text-anchor="middle" fill="%23ffffff60" font-size="14" font-family="Cairo,sans-serif">الصورة غير متوفرة</text></svg>';
+                caption.textContent = '⚠️ الرجاء تحديث مسار الصورة';
             });
-            heroWrapper.addEventListener('mouseleave', function() {
-                glowRing.style.transform = 'translate(0, 0)';
-                glowRing.style.transition = 'transform 0.6s ease-out';
-                setTimeout(() => {
-                    glowRing.style.transition = 'none';
-                }, 600);
-            });
-        }
 
-        // ═══════════════════════════════════
-        // LIGHTBOX LOGIC
-        // ═══════════════════════════════════
-        const lightboxOverlay = document.getElementById('lightboxOverlay');
-        const lightboxImg = document.getElementById('lightboxImg');
-        const lightboxCaption = document.getElementById('lightboxCaption');
-        const lightboxClose = document.getElementById('lightboxClose');
-        const certCards = document.querySelectorAll('.cert-card');
+            // ─────────────────────────────────────
+            // TECH NETWORK MESH (شبكة تكنولوجيا)
+            // ─────────────────────────────────────
+            const canvas = document.getElementById('particleCanvas');
+            const ctx = canvas.getContext('2d');
 
-        function openLightbox(imgSrc, captionText) {
-            lightboxImg.src = imgSrc;
-            lightboxCaption.textContent = captionText || '';
-            lightboxOverlay.classList.add('active');
-            lightboxOverlay.setAttribute('aria-hidden', 'false');
-            document.body.style.overflow = 'hidden';
-        }
+            let nodes = [];
+            let edges = []; // { from, to }
+            let packets = [];
+            const PACKET_COUNT = 18;
+            const NODE_RADIUS = 2.5;
+            const GRID_SPACING = 85;
+            let mouseX = -500, mouseY = -500;
+            let animationId;
 
-        function closeLightbox() {
-            lightboxOverlay.classList.remove('active');
-            lightboxOverlay.setAttribute('aria-hidden', 'true');
-            document.body.style.overflow = '';
-            // Delay clearing src to allow fade-out
-            setTimeout(() => {
-                lightboxImg.src = '';
-                lightboxCaption.textContent = '';
-            }, 400);
-        }
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                buildGrid();
+            }
+            window.addEventListener('resize', resizeCanvas);
 
-        // Click on any certification card
-        certCards.forEach(card => {
-            card.addEventListener('click', function() {
-                const imgSrc = this.getAttribute('data-cert-img');
-                const certName = this.getAttribute('data-cert-name');
-                if (imgSrc) {
-                    openLightbox(imgSrc, certName);
-                }
-            });
-            // Keyboard accessibility
-            card.setAttribute('tabindex', '0');
-            card.setAttribute('role', 'button');
-            card.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    const imgSrc = this.getAttribute('data-cert-img');
-                    const certName = this.getAttribute('data-cert-name');
-                    if (imgSrc) {
-                        openLightbox(imgSrc, certName);
+            // Track mouse
+            document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+            document.addEventListener('mouseleave', () => { mouseX = -500; mouseY = -500; });
+            document.addEventListener('touchmove', e => { if(e.touches.length>0) { mouseX=e.touches[0].clientX; mouseY=e.touches[0].clientY; } }, {passive:true});
+            document.addEventListener('touchend', () => { mouseX=-500; mouseY=-500; });
+
+            function buildGrid() {
+                nodes = [];
+                edges = [];
+                const cols = Math.floor(canvas.width / GRID_SPACING) + 2;
+                const rows = Math.floor(canvas.height / GRID_SPACING) + 2;
+                const offsetX = (canvas.width - (cols-1)*GRID_SPACING)/2;
+                const offsetY = (canvas.height - (rows-1)*GRID_SPACING)/2;
+
+                // Create nodes with slight random jitter
+                for (let r=0; r<rows; r++) {
+                    for (let c=0; c<cols; c++) {
+                        let x = offsetX + c*GRID_SPACING + (Math.random()-0.5)*10;
+                        let y = offsetY + r*GRID_SPACING + (Math.random()-0.5)*10;
+                        nodes.push({
+                            x, y,
+                            baseX: x, baseY: y,
+                            pulse: Math.random()*Math.PI*2,
+                            pulseSpeed: 0.02 + Math.random()*0.03
+                        });
                     }
                 }
-            });
-        });
 
-        // Close button
-        lightboxClose.addEventListener('click', closeLightbox);
+                // Build edges: connect each node to right and bottom neighbour
+                for (let r=0; r<rows; r++) {
+                    for (let c=0; c<cols; c++) {
+                        const idx = r*cols + c;
+                        if (c+1 < cols) edges.push({ from: idx, to: r*cols + (c+1) });
+                        if (r+1 < rows) edges.push({ from: idx, to: (r+1)*cols + c });
+                    }
+                }
 
-        // Close on overlay click (outside image)
-        lightboxOverlay.addEventListener('click', function(e) {
-            if (e.target === lightboxOverlay) {
-                closeLightbox();
-            }
-        });
-
-        // Close on Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && lightboxOverlay.classList.contains('active')) {
-                closeLightbox();
-            }
-        });
-
-        // Handle image load error in lightbox
-        lightboxImg.addEventListener('error', function() {
-            this.src =
-                'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" fill="%23ffffff20"><rect width="300" height="200" rx="12" fill="%231a1a30"/><text x="150" y="90" text-anchor="middle" fill="%23ffffff60" font-size="14" font-family="Cairo,sans-serif">الصورة غير متوفرة</text><text x="150" y="115" text-anchor="middle" fill="%23ffffff40" font-size="11" font-family="Cairo,sans-serif">Image Not Found</text></svg>';
-            lightboxCaption.textContent = '⚠️ الرجاء تحديث مسار الصورة';
-        });
-
-        // ═══════════════════════════════════
-        // PARTICLE SYSTEM (Tech + Business)
-        // ═══════════════════════════════════
-        const canvas = document.getElementById('particleCanvas');
-        const ctx = canvas.getContext('2d');
-
-        let particles = [];
-        const PARTICLE_COUNT = 70;
-        const CONNECTION_DIST = 130;
-        const MOUSE_INFLUENCE_DIST = 160;
-
-        let mouseX = -500;
-        let mouseY = -500;
-        let animationId;
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-
-        // Track mouse
-        document.addEventListener('mousemove', function(e) {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
-        document.addEventListener('mouseleave', function() {
-            mouseX = -500;
-            mouseY = -500;
-        });
-        // Touch support
-        document.addEventListener('touchmove', function(e) {
-            if (e.touches.length > 0) {
-                mouseX = e.touches[0].clientX;
-                mouseY = e.touches[0].clientY;
-            }
-        }, { passive: true });
-        document.addEventListener('touchend', function() {
-            mouseX = -500;
-            mouseY = -500;
-        });
-
-        // Particle class
-        class Particle {
-            constructor() {
-                this.reset(true);
+                // Initialize packets
+                initPackets();
             }
 
-            reset(initial = false) {
-                this.x = Math.random() * canvas.width;
-                this.y = initial ? Math.random() * canvas.height : canvas.height + 20;
-                this.size = Math.random() * 2.5 + 0.8;
-                this.baseSize = this.size;
-                this.speedY = -(Math.random() * 0.4 + 0.15);
-                this.speedX = (Math.random() - 0.5) * 0.35;
-                this.opacity = Math.random() * 0.55 + 0.2;
-                this.baseOpacity = this.opacity;
-                this.hue = Math.random() < 0.5 ? 210 + Math.random() * 30 : 200 + Math.random() * 20;
-                this.pulseOffset = Math.random() * Math.PI * 2;
-                this.pulseSpeed = Math.random() * 0.02 + 0.008;
-                this.isDataPacket = Math.random() < 0.12;
-                if (this.isDataPacket) {
-                    this.size = Math.random() * 3.5 + 1.5;
-                    this.baseSize = this.size;
-                    this.opacity = Math.random() * 0.7 + 0.4;
-                    this.baseOpacity = this.opacity;
-                    this.speedY = -(Math.random() * 0.7 + 0.3);
-                    this.hue = 190;
+            function initPackets() {
+                packets = [];
+                for (let i=0; i<PACKET_COUNT; i++) {
+                    if (edges.length === 0) continue;
+                    const edgeIdx = Math.floor(Math.random() * edges.length);
+                    const edge = edges[edgeIdx];
+                    const fromNode = nodes[edge.from];
+                    const toNode = nodes[edge.to];
+                    packets.push({
+                        from: edge.from,
+                        to: edge.to,
+                        x: fromNode.x,
+                        y: fromNode.y,
+                        progress: Math.random(), // 0..1
+                        speed: 0.002 + Math.random()*0.006,
+                        edgeIdx: edgeIdx
+                    });
                 }
             }
 
-            update() {
-                // Gentle floating
-                this.y += this.speedY;
-                this.x += this.speedX + Math.sin(Date.now() * 0.0008 + this.pulseOffset) * 0.15;
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-                // Pulse size
-                this.size = this.baseSize + Math.sin(Date.now() * this.pulseSpeed + this.pulseOffset) * 0.6;
-                this.opacity = this.baseOpacity + Math.sin(Date.now() * this.pulseSpeed + this.pulseOffset) * 0.15;
-                this.opacity = Math.max(0.08, Math.min(0.85, this.opacity));
+                // Update nodes with subtle floating motion
+                const time = Date.now() * 0.001;
+                nodes.forEach(node => {
+                    node.x = node.baseX + Math.sin(time + node.pulse) * 1.8;
+                    node.y = node.baseY + Math.cos(time + node.pulse*1.3) * 1.8;
+                });
 
-                // Mouse influence
-                const dx = this.x - mouseX;
-                const dy = this.y - mouseY;
-                const distToMouse = Math.sqrt(dx * dx + dy * dy);
-                if (distToMouse < MOUSE_INFLUENCE_DIST) {
-                    const force = (MOUSE_INFLUENCE_DIST - distToMouse) / MOUSE_INFLUENCE_DIST;
-                    const angle = Math.atan2(dy, dx);
-                    this.x += Math.cos(angle) * force * 1.2;
-                    this.y += Math.sin(angle) * force * 1.2;
-                    this.size = this.baseSize + force * 2;
-                    this.opacity = Math.min(0.9, this.baseOpacity + force * 0.5);
-                }
-
-                // Wrap around
-                if (this.y < -30) {
-                    this.y = canvas.height + 20;
-                    this.x = Math.random() * canvas.width;
-                }
-                if (this.x < -30) this.x = canvas.width + 20;
-                if (this.x > canvas.width + 30) this.x = -20;
-
-                // Keep in bounds loosely
-                if (this.y > canvas.height + 40) {
-                    this.y = -20;
-                    this.x = Math.random() * canvas.width;
-                }
-            }
-
-            draw(ctx) {
+                // Draw edges (connections)
                 ctx.save();
-                // Outer glow
-                const glowGrad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size * 3.5);
-                const glowColor = this.isDataPacket ?
-                    `rgba(120,200,255,${this.opacity * 0.5})` :
-                    `rgba(59,127,255,${this.opacity * 0.35})`;
-                glowGrad.addColorStop(0, glowColor);
-                glowGrad.addColorStop(1, 'transparent');
-                ctx.fillStyle = glowGrad;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size * 3.5, 0, Math.PI * 2);
-                ctx.fill();
-
-                // Core
-                const coreColor = this.isDataPacket ?
-                    `rgba(180,225,255,${this.opacity})` :
-                    `rgba(150,200,255,${this.opacity})`;
-                ctx.fillStyle = coreColor;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-
-                // Bright center for data packets
-                if (this.isDataPacket) {
-                    ctx.fillStyle = `rgba(255,255,255,${this.opacity * 0.9})`;
+                ctx.strokeStyle = 'rgba(59,127,255,0.16)';
+                ctx.lineWidth = 0.7;
+                edges.forEach(edge => {
+                    const from = nodes[edge.from];
+                    const to = nodes[edge.to];
+                    if (!from || !to) return;
                     ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.size * 0.4, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-
+                    ctx.moveTo(from.x, from.y);
+                    ctx.lineTo(to.x, to.y);
+                    ctx.stroke();
+                });
                 ctx.restore();
-            }
-        }
 
-        // Initialize particles
-        function initParticles() {
-            particles = [];
-            for (let i = 0; i < PARTICLE_COUNT; i++) {
-                particles.push(new Particle());
-            }
-        }
-        initParticles();
-
-        // Draw connections between nearby particles
-        function drawConnections(ctx) {
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-
-                    if (dist < CONNECTION_DIST) {
-                        const alpha = (1 - dist / CONNECTION_DIST) * 0.22;
-                        const lineWidth = (1 - dist / CONNECTION_DIST) * 0.8;
-
-                        ctx.save();
-                        ctx.strokeStyle = `rgba(100,160,240,${alpha})`;
-                        ctx.lineWidth = lineWidth;
-                        ctx.shadowColor = `rgba(59,127,255,${alpha * 0.6})`;
-                        ctx.shadowBlur = 4;
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
-                        ctx.restore();
+                // Draw nodes
+                nodes.forEach(node => {
+                    // Mouse proximity effect
+                    const dx = node.x - mouseX;
+                    const dy = node.y - mouseY;
+                    const distToMouse = Math.sqrt(dx*dx+dy*dy);
+                    let glowFactor = 0;
+                    const MOUSE_RADIUS = 130;
+                    if (distToMouse < MOUSE_RADIUS) {
+                        glowFactor = (1 - distToMouse/MOUSE_RADIUS);
                     }
+
+                    const baseAlpha = 0.55 + Math.sin(time + node.pulse)*0.15;
+                    const alpha = Math.min(0.9, baseAlpha + glowFactor*0.35);
+                    const size = NODE_RADIUS + glowFactor * 1.8;
+
+                    ctx.save();
+                    // Outer glow
+                    const grad = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, size*4);
+                    grad.addColorStop(0, `rgba(79,143,255,${alpha*0.6})`);
+                    grad.addColorStop(1, 'transparent');
+                    ctx.fillStyle = grad;
+                    ctx.beginPath();
+                    ctx.arc(node.x, node.y, size*4, 0, Math.PI*2);
+                    ctx.fill();
+
+                    // Core
+                    ctx.fillStyle = `rgba(180,215,255,${alpha})`;
+                    ctx.beginPath();
+                    ctx.arc(node.x, node.y, size, 0, Math.PI*2);
+                    ctx.fill();
+
+                    // Highlight if near mouse
+                    if (glowFactor > 0.2) {
+                        ctx.fillStyle = `rgba(255,255,255,${glowFactor*0.7})`;
+                        ctx.beginPath();
+                        ctx.arc(node.x, node.y, size*0.6, 0, Math.PI*2);
+                        ctx.fill();
+                    }
+                    ctx.restore();
+                });
+
+                // Update & draw data packets
+                packets.forEach(packet => {
+                    const edge = edges[packet.edgeIdx];
+                    if (!edge || !nodes[edge.from] || !nodes[edge.to]) {
+                        // Reassign random edge
+                        if (edges.length > 0) {
+                            const newIdx = Math.floor(Math.random()*edges.length);
+                            packet.edgeIdx = newIdx;
+                            packet.from = edges[newIdx].from;
+                            packet.to = edges[newIdx].to;
+                        }
+                        return;
+                    }
+                    const from = nodes[edge.from];
+                    const to = nodes[edge.to];
+                    packet.progress += packet.speed;
+                    if (packet.progress >= 1.0) {
+                        packet.progress = 0;
+                        // Move to a new random edge occasionally
+                        if (Math.random() < 0.3 && edges.length > 0) {
+                            const newIdx = Math.floor(Math.random()*edges.length);
+                            packet.edgeIdx = newIdx;
+                            packet.from = edges[newIdx].from;
+                            packet.to = edges[newIdx].to;
+                        }
+                    }
+                    const t = packet.progress;
+                    packet.x = from.x + (to.x - from.x) * t;
+                    packet.y = from.y + (to.y - from.y) * t;
+
+                    // Draw packet
+                    ctx.save();
+                    const packetGlow = ctx.createRadialGradient(packet.x, packet.y, 0, packet.x, packet.y, 6);
+                    packetGlow.addColorStop(0, 'rgba(180,230,255,0.9)');
+                    packetGlow.addColorStop(0.5, 'rgba(59,127,255,0.5)');
+                    packetGlow.addColorStop(1, 'transparent');
+                    ctx.fillStyle = packetGlow;
+                    ctx.beginPath();
+                    ctx.arc(packet.x, packet.y, 6, 0, Math.PI*2);
+                    ctx.fill();
+                    ctx.fillStyle = '#ffffff';
+                    ctx.beginPath();
+                    ctx.arc(packet.x, packet.y, 1.8, 0, Math.PI*2);
+                    ctx.fill();
+                    ctx.restore();
+                });
+
+                // Occasionally add a new packet if some disappeared
+                if (packets.length < PACKET_COUNT && edges.length > 0) {
+                    const edgeIdx = Math.floor(Math.random()*edges.length);
+                    const edge = edges[edgeIdx];
+                    packets.push({
+                        from: edge.from,
+                        to: edge.to,
+                        x: nodes[edge.from].x,
+                        y: nodes[edge.from].y,
+                        progress: 0,
+                        speed: 0.002 + Math.random()*0.006,
+                        edgeIdx: edgeIdx
+                    });
                 }
-            }
-        }
 
-        // Animate
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            particles.forEach(p => {
-                p.update();
-                p.draw(ctx);
-            });
-
-            drawConnections(ctx);
-
-            // Occasional "data stream" ripple (rare)
-            if (Math.random() < 0.015) {
-                const rippleX = Math.random() * canvas.width;
-                const rippleY = Math.random() * canvas.height;
-                ctx.save();
-                const rippleGrad = ctx.createRadialGradient(rippleX, rippleY, 0, rippleX, rippleY, 60);
-                rippleGrad.addColorStop(0, 'rgba(120,190,255,0.25)');
-                rippleGrad.addColorStop(1, 'transparent');
-                ctx.fillStyle = rippleGrad;
-                ctx.beginPath();
-                ctx.arc(rippleX, rippleY, 60, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.restore();
+                animationId = requestAnimationFrame(animate);
             }
 
-            animationId = requestAnimationFrame(animate);
-        }
-
-        animate();
-
-        // Handle window resize for particles
-        window.addEventListener('resize', () => {
             resizeCanvas();
-            initParticles();
-        });
+            animate();
 
-        console.log('%c✨ أهلاً بك في بورتفوليو أسامة | Osama Portfolio %c🚀',
-            'color: #7eb8ff; font-size: 1.1rem; font-weight: bold;',
-            'color: #fff;');
-        console.log('%c⚡ نظام الجسيمات التفاعلية نشط | Particle System Active', 'color: #4f8fff;');
-        console.log('%c📜 اضغط على بطاقات الشهادات لعرض الصور | Click cert cards to view images',
-            'color: #25d366;');
-        console.log('%c✅ تم تحميل جميع العناصر بنجاح ✓', 'color: #25d366;');
-    })();
-</script>
+            // Rebuild on resize handled by resizeCanvas event
+
+            console.log('%c✨ أهلاً بك في بورتفوليو أسامة | Osama Portfolio %c🚀', 'color:#7eb8ff; font-size:1.1rem; font-weight:bold;', 'color:#fff;');
+            console.log('%c🌐 شبكة تكنولوجيا تفاعلية | Tech Network Mesh Active', 'color:#4f8fff;');
+            console.log('%c✅ جميع العناصر جاهزة', 'color:#25d366;');
+        })();
+    </script>
 </body>
 </html>
