@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أسامة | Osama - Portfolio</title>
+
+    <!-- Google Fonts: Cairo for Arabic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome 6 for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-deep: #06060e;
+            --bg-surface: #0c0c1a;
+            --blue-primary: #3b7fff;
+            --blue-glow: #4f8fff;
+            --blue-dark: #1a3a6e;
+            --blue-light: #7eb8ff;
+            --white-soft: #e8ecf2;
+            --white-muted: #b0b8c5;
+            --glass-bg: rgba(255, 255, 255, 0.025);
+            --glass-border: rgba(255, 255, 255, 0.07);
+            --glass-border-hover: rgba(255, 255, 255, 0.18);
+            --glass-bg-hover: rgba(255, 255, 255, 0.05);
+            --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.45);
+            --shadow-card-hover: 0 16px 48px rgba(30, 70, 160, 0.3);
+            --radius-lg: 22px;
+            --radius-md: 16px;
+            --radius-sm: 12px;
+            --transition-smooth: 0.35s cubic-bezier(0.25, 0.8, 0.25, 1.2);
+            --transition-soft: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: var(--bg-deep);
+            color: var(--white-soft);
+            min-height: 100vh;
+            line-height: 1.7;
+            overflow-x: hidden;
+            position: relative;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ─────────────────────────────────────
+           BACKGROUND ORBS (Futuristic Glow)
+        ───────────────────────────────────── */
+        .bg-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.25;
+            pointer-events: none;
+            z-index: 0;
+            animation: orbFloat 16s ease-in-out infinite;
+        }
+        .bg-orb-1 {
+            width: 550px;
+            height: 550px;
+            background: radial-gradient(circle, rgba(59, 127, 255, 0.55) 0%, transparent 70%);
+            top: -180px;
+            left: -120px;
+            animation-delay: 0s;
+        }
+        .bg-orb-2 {
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(30, 60, 140, 0.5) 0%, transparent 70%);
+            bottom: -150px;
+            right: -100px;
+            animation-delay: -7s;
+            animation-duration: 19s;
+        }
+        .bg-orb-3 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(79, 143, 255, 0.4) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: -12s;
+            animation-duration: 22s;
+        }
+
+        @keyframes orbFloat {
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+            25% {
+                transform: translate(60px, -50px) scale(1.1);
+            }
+            50% {
+                transform: translate(-30px, 40px) scale(0.9);
+            }
+            75% {
+                transform: translate(-50px, -30px) scale(1.05);
+            }
+        }
+
+        /* Subtle grid overlay */
+        .grid-overlay {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+            background-size: 60px 60px;
+            opacity: 0.5;
+        }
+
+        /* ─────────────────────────────────────
+           MAIN CONTAINER
+        ───────────────────────────────────── */
+        .main-container {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 30px 20px 60px;
+        }
+
+        /* ─────────────────────────────────────
+           HERO SECTION
+        ───────────────────────────────────── */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 50px 20px 40px;
+            margin-bottom: 30px;
+        }
+
+        /* Photo container with glow rings */
+        .hero-photo-wrapper {
+            position: relative;
+            width: 170px;
+            height: 170px;
+            margin-bottom: 28px;
+            flex-shrink: 0;
+        }
+        .hero-photo-glow {
+            position: absolute;
+            inset: -18px;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg,
+                    transparent 0deg,
+                    rgba(59, 127, 255, 0.5) 90deg,
+                    rgba(79, 143, 255, 0.7) 180deg,
+                    rgba(59, 127, 255, 0.5) 270deg,
+                    transparent 360deg);
+            animation: glowSpin 8s linear infinite;
+            filter: blur(18px);
+            z-index: 0;
+        }
+        @keyframes glowSpin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        .hero-photo-ring {
+            position: absolute;
+            inset: -8px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            z-index: 1;
+            animation: ringPulse 3s ease-in-out infinite;
+        }
+        @keyframes ringPulse {
+            0%,
+            100% {
+                border-color: rgba(255, 255, 255, 0.12);
+                box-shadow: 0 0 20px rgba(59, 127, 255, 0.2);
+            }
+            50% {
+                border-color: rgba(255, 255, 255, 0.28);
+                box-shadow: 0 0 40px rgba(59, 127, 255, 0.45);
+            }
+        }
+        .hero-photo {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, #1a2a4a 0%, #0d1a30 50%, #0a1525 100%);
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            overflow: hidden;
+            transition: var(--transition-smooth);
+        }
+        .hero-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        .hero-photo .photo-placeholder {
+            font-size: 62px;
+            color: rgba(255, 255, 255, 0.55);
+            transition: var(--transition-soft);
+        }
+        .hero-photo-wrapper:hover .hero-photo {
+            border-color: rgba(255, 255, 255, 0.45);
+            box-shadow: 0 0 50px rgba(59, 127, 255, 0.5);
+        }
+        .hero-photo-wrapper:hover .hero-photo-ring {
+            border-color: rgba(255, 255, 255, 0.35);
+            box-shadow: 0 0 55px rgba(59, 127, 255, 0.55);
+        }
+
+        /* Hero text */
+        .hero-name {
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+            background: linear-gradient(135deg, #ffffff 0%, #c8d8f8 40%, #7eb8ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+        .hero-title {
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: var(--white-muted);
+            margin-bottom: 6px;
+            letter-spacing: 0.5px;
+        }
+        .hero-subtitle {
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.5);
+            max-width: 500px;
+            margin-bottom: 24px;
+        }
+
+        /* Social Icons */
+        .social-icons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--glass-border);
+            color: var(--white-muted);
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+        .social-icon:hover {
+            transform: translateY(-5px);
+            border-color: var(--glass-border-hover);
+            box-shadow: var(--shadow-card-hover);
+        }
+        .social-icon.linkedin:hover {
+            color: #0a66c2;
+            background: rgba(10, 102, 194, 0.15);
+            border-color: rgba(10, 102, 194, 0.5);
+            box-shadow: 0 8px 30px rgba(10, 102, 194, 0.4);
+        }
+        .social-icon.instagram:hover {
+            color: #e4405f;
+            background: rgba(228, 64, 95, 0.15);
+            border-color: rgba(228, 64, 95, 0.5);
+            box-shadow: 0 8px 30px rgba(228, 64, 95, 0.4);
+        }
+        .social-icon.facebook:hover {
+            color: #1877f2;
+            background: rgba(24, 119, 242, 0.15);
+            border-color: rgba(24, 119, 242, 0.5);
+            box-shadow: 0 8px 30px rgba(24, 119, 242, 0.4);
+        }
+        .social-icon.whatsapp:hover {
+            color: #25d366;
+            background: rgba(37, 211, 102, 0.15);
+            border-color: rgba(37, 211, 102, 0.5);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
+        }
+
+        /* ─────────────────────────────────────
+           SECTION TITLES
+        ───────────────────────────────────── */
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 28px;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            color: var(--white-soft);
+            letter-spacing: 0.5px;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--blue-primary), var(--blue-light), var(--blue-primary));
+            animation: titleLine 3s ease-in-out infinite;
+        }
+        @keyframes titleLine {
+            0%,
+            100% {
+                width: 50px;
+                opacity: 0.8;
+            }
+            50% {
+                width: 80px;
+                opacity: 1;
+            }
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        /* ─────────────────────────────────────
+           GLASS CARD BASE
+        ───────────────────────────────────── */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: 26px 24px;
+            box-shadow: var(--shadow-card);
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.08),
+                    rgba(255, 255, 255, 0.15),
+                    rgba(255, 255, 255, 0.08),
+                    transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .glass-card:hover::before {
+            opacity: 1;
+        }
+        .glass-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--glass-border-hover);
+            box-shadow: var(--shadow-card-hover);
+            background: var(--glass-bg-hover);
+        }
+
+        /* Card icon */
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 16px;
+            background: rgba(59, 127, 255, 0.12);
+            color: var(--blue-light);
+            transition: var(--transition-smooth);
+            flex-shrink: 0;
+        }
+        .glass-card:hover .card-icon {
+            background: rgba(59, 127, 255, 0.22);
+            color: #ffffff;
+            box-shadow: 0 4px 20px rgba(59, 127, 255, 0.35);
+            transform: scale(1.05);
+        }
+        .card-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--white-soft);
+            transition: var(--transition-soft);
+        }
+        .card-subtitle {
+            font-size: 0.85rem;
+            color: var(--white-muted);
+            line-height: 1.5;
+        }
+
+        /* ─────────────────────────────────────
+           GRID LAYOUTS
+        ───────────────────────────────────── */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .cards-grid.skills-grid {
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 16px;
+        }
+
+        /* ─────────────────────────────────────
+           SECTIONS SPACING
+        ───────────────────────────────────── */
+        .section-block {
+            margin-bottom: 50px;
+        }
+
+        /* About / Objective block */
+        .about-card {
+            max-width: 750px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: var(--white-muted);
+        }
+        .about-card .highlight {
+            color: var(--blue-light);
+            font-weight: 600;
+        }
+
+        /* Education card */
+        .education-card {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .education-card .card-icon {
+            margin-bottom: 0;
+        }
+
+        /* ─────────────────────────────────────
+           FOOTER
+        ───────────────────────────────────── */
+        .site-footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: rgba(255, 255, 255, 0.35);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 30px;
+        }
+        .site-footer span {
+            color: var(--blue-light);
+        }
+
+        /* ─────────────────────────────────────
+           REVEAL ANIMATION (JS-driven)
+        ───────────────────────────────────── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ─────────────────────────────────────
+           RESPONSIVE
+        ───────────────────────────────────── */
+        @media (max-width: 768px) {
+            .hero-name {
+                font-size: 2rem;
+            }
+            .hero-title {
+                font-size: 1rem;
+            }
+            .hero-photo-wrapper {
+                width: 130px;
+                height: 130px;
+            }
+            .hero-photo .photo-placeholder {
+                font-size: 46px;
+            }
+            .section-title {
+                font-size: 1.3rem;
+            }
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            .cards-grid.skills-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 12px;
+            }
+            .glass-card {
+                padding: 18px 16px;
+                border-radius: var(--radius-md);
+            }
+            .social-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cards-grid.skills-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+            .hero-name {
+                font-size: 1.6rem;
+            }
+            .main-container {
+                padding: 15px 10px 40px;
+            }
+            .hero {
+                padding: 30px 10px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background ambient orbs -->
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+    <div class="bg-orb bg-orb-3"></div>
+    <div class="grid-overlay"></div>
+
+    <!-- Main Content -->
+    <div class="main-container">
+
+        <!-- ═══════════════════════════════
+             HERO SECTION
+             ═══════════════════════════════ -->
+        <section class="hero reveal">
+            <!-- Photo -->
+            <div class="hero-photo-wrapper">
+                <div class="hero-photo-glow"></div>
+                <div class="hero-photo-ring"></div>
+                <div class="hero-photo" id="heroPhotoContainer">
+                    <!--
+                    ╔══════════════════════════════════════╗
+                    ║  استبدل السطر التالي بصورتك الشخصية ║
+                    ║  Replace below with your own image  ║
+                    ╚══════════════════════════════════════╝
+                    -->
+                    <!-- عند إضافة صورتك، استخدم: -->
+                    <!-- <img src="your-photo.jpg" alt="أسامة"> -->
+                    <i class="fa-solid fa-user photo-placeholder" id="photoPlaceholder" aria-label="صورة شخصية"></i>
+                </div>
+            </div>
+
+            <!-- Name & Title -->
+            <h1 class="hero-name">أسامة</h1>
+            <p class="hero-title">تطوير الأعمال · التسويق · المبيعات · التجارة الإلكترونية</p>
+            <p class="hero-subtitle">طالب بكلية التجارة، أحول المعرفة إلى نتائج عملية على أرض الواقع</p>
+
+            <!-- Social Media Icons -->
+            <div class="social-icons">
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/your-linkedin" target="_blank" rel="noopener noreferrer"
+                class="social-icon linkedin" title="LinkedIn" aria-label="LinkedIn">
+                <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/your-instagram" target="_blank" rel="noopener noreferrer"
+            class="social-icon instagram" title="Instagram" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/your-facebook" target="_blank" rel="noopener noreferrer"
+        class="social-icon facebook" title="Facebook" aria-label="Facebook">
+        <i class="fa-brands fa-facebook-f"></i>
+    </a>
+    <!-- WhatsApp -->
+    <a href="https://wa.me/201000000000" target="_blank" rel="noopener noreferrer"
+    class="social-icon whatsapp" title="WhatsApp" aria-label="WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+</a>
+</div>
+</section>
+
+<!-- ═══════════════════════════════
+    CAREER OBJECTIVE
+    ═══════════════════════════════ -->
+<section class="section-block reveal">
+<div class="section-header">
+    <h2 class="section-title">🎯 الهدف الوظيفي</h2>
+</div>
+<div class="glass-card about-card">
+    <p>
+        أبحث عن فرصة <span class="highlight">عمل أو تدريب</span> في مجالات
+        <span class="highlight">تطوير الأعمال</span>،
+        <span class="highlight">التسويق</span>، أو
+        <span class="highlight">التجارة الإلكترونية</span>،
+        حيث أستطيع <span class="highlight">تقديم قيمة حقيقية</span> وتطوير مهاراتي المهنية
+        في بيئة عملية محفزة تدفعني للنمو والتطور المستمر.
+    </p>
+</div>
+</section>
+
+<!-- ═══════════════════════════════
+    EDUCATION
+    ═══════════════════════════════ -->
+<section class="section-block reveal">
+<div class="section-header">
+    <h2 class="section-title">📚 التعليم</h2>
+</div>
+<div class="glass-card education-card">
+    <div class="card-icon">
+        <i class="fa-solid fa-graduation-cap"></i>
+    </div>
+    <div>
+        <h3 class="card-title">طالب في كلية تجارة</h3>
+        <p class="card-subtitle">كلية التجارة · تخصص إدارة الأعمال</p>
+    </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════
+    CERTIFICATIONS & TRAINING
+    ═══════════════════════════════ -->
+<section class="section-block reveal">
+<div class="section-header">
+    <h2 class="section-title">📜 الشهادات والتدريبات</h2>
+</div>
+<div class="cards-grid">
+    <!-- 1. Business Development -->
+    <div class="glass-card">
+        <div class="card-icon">
+            <i class="fa-solid fa-rocket"></i>
+        </div>
+        <h3 class="card-title">تطوير الأعمال</h3>
+        <p class="card-subtitle">Business Development Certification</p>
+    </div>
+    <!-- 2. Marketing -->
+    <div class="glass-card">
+        <div class="card-icon">
+            <i class="fa-solid fa-bullhorn"></i>
+        </div>
+        <h3 class="card-title">التسويق</h3>
+        <p class="card-subtitle">Marketing Certification</p>
+    </div>
+    <!-- 3. Sales -->
+    <div class="glass-card">
+        <div class="card-icon">
+            <i class="fa-solid fa-handshake"></i>
+        </div>
+        <h3 class="card-title">المبيعات</h3>
+        <p class="card-subtitle">Sales Certification</p>
+    </div>
+    <!-- 4. Business Fundamentals -->
+    <div class="glass-card">
+        <div class="card-icon">
+            <i class="fa-solid fa-briefcase"></i>
+        </div>
+        <h3 class="card-title">أساسيات إدارة الأعمال</h3>
+        <p class="card-subtitle">Business Fundamentals Certification</p>
+    </div>
+    <!-- 5. Feasibility Study -->
+    <div class="glass-card">
+        <div class="card-icon">
+            <i class="fa-solid fa-magnifying-glass-chart"></i>
+        </div>
+        <h3 class="card-title">دراسة الجدوى وتحليل السوق</h3>
+        <p class="card-subtitle">Feasibility Study & Market Analysis Training</p>
+    </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════
+    CORE SKILLS
+    ═══════════════════════════════ -->
+<section class="section-block reveal">
+<div class="section-header">
+    <h2 class="section-title">⚡ المهارات الأساسية</h2>
+</div>
+<div class="cards-grid skills-grid">
+    <!-- 1 -->
+    <div class="glass-card">
+        <div class="card-icon">
+            <i class="fa-solid fa-seedling"></i>
+        </div>
+        <h3 class="card-title">تطوير وتنمية المشاريع</h3>
+        <p class="card-subtitle">تنمية الشركات والمشاريع الناشئة</p>
+    </div>
+    <!-- 2 -->
+    <div class="glass-card">
+        <div class="card-icon">
+            <i class="fa-solid fa-file-lines"></i>
+        </div>
+        <h3 class="card-title">إعداد خطط تسويقية</h3>
+        <p class="card-subtitle">خطط تسويقية فعالة ومتكاملة</p>
+    </div>
+    <!-- 3 -->
+    <div class="glass-card">
+        <div class="card-icon">
+            <i class="fa-solid fa-handshake-simple"></i>
+        </div>
+        <h3 class="card-title">البيع والتفاوض</h3>
+        <p class="card-subtitle">مهارات البيع وإغلاق الصفقات</p>
+    </div>
+    <!-- 4 -->
+    <div class="glass-card">
+        <div class="card-icon">
+            <i class="fa-solid fa-chart-bar"></i>
+        </div>
+        <h3 class="card-title">دراسة السوق</h3>
+        <p class="card-subtitle">تحليل السوق والمنافسين</p>
+    </div>
+    <!-- 5 -->
+    <div class="glass-card">
+        <div class="card-icon">
+            <i class="fa-solid fa-clipboard-check"></i>
+        </div>
+        <h3 class="card-title">دراسات الجدوى</h3>
+        <p class="card-subtitle">إعداد دراسات جدوى احترافية</p>
+    </div>
+    <!-- 6 -->
+    <div class="glass-card">
+        <div class="card-icon">
+            <i class="fa-solid fa-arrow-trend-up"></i>
+        </div>
+        <h3 class="card-title">خطط النمو</h3>
+        <p class="card-subtitle">بناء خطط نمو للمشاريع الناشئة</p>
+    </div>
+    <!-- 7 -->
+    <div class="glass-card">
+        <div class="card-icon">
+            <i class="fa-solid fa-headset"></i>
+        </div>
+        <h3 class="card-title">خدمة العملاء</h3>
+        <p class="card-subtitle">إدارة علاقات العملاء</p>
+    </div>
+    <!-- 8 -->
+    <div class="glass-card">
+        <div class="card-icon">
+            <i class="fa-solid fa-brain"></i>
+        </div>
+        <h3 class="card-title">التفكير التحليلي</h3>
+        <p class="card-subtitle">حل المشكلات والتفكير التحليلي</p>
+    </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════
+    FOOTER
+    ═══════════════════════════════ -->
+<footer class="site-footer reveal">
+    <p>© 2025 <span>أسامة</span> · جميع الحقوق محفوظة · صُنع بحب وإتقان</p>
+</footer>
+</div>
+
+<!-- ═══════════════════════════════
+     JAVASCRIPT
+     ═══════════════════════════════ -->
+<script>
+    (function() {
+        // ── Intersection Observer for scroll-reveal animations ──
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -60px 0px',
+            threshold: 0.12
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    // Once revealed, stop observing
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        revealElements.forEach(el => observer.observe(el));
+
+        // ── Manual trigger for elements already in view on load ──
+        window.addEventListener('DOMContentLoaded', () => {
+            revealElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    // Slight delay for initial cascade
+                    setTimeout(() => {
+                        el.classList.add('revealed');
+                        observer.unobserve(el);
+                    }, 80);
+                }
+            });
+        });
+
+        // ── Subtle parallax glow follow on hero photo wrapper (desktop) ──
+        const heroWrapper = document.querySelector('.hero-photo-wrapper');
+        const glowRing = document.querySelector('.hero-photo-glow');
+
+        if (heroWrapper && glowRing && window.innerWidth > 768) {
+            heroWrapper.addEventListener('mousemove', function(e) {
+                const rect = heroWrapper.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                const offsetX = x * 0.08;
+                const offsetY = y * 0.08;
+                glowRing.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+            });
+            heroWrapper.addEventListener('mouseleave', function() {
+                glowRing.style.transform = 'translate(0, 0)';
+                glowRing.style.transition = 'transform 0.6s ease-out';
+                setTimeout(() => {
+                    glowRing.style.transition = 'none';
+                }, 600);
+            });
+        }
+
+        console.log('%c✨ أهلاً بك في بورتفوليو أسامة | Osama Portfolio %c🚀',
+            'color: #7eb8ff; font-size: 1.1rem; font-weight: bold;',
+            'color: #fff;');
+        console.log('%cتم تحميل جميع العناصر بنجاح ✓', 'color: #25d366;');
+    })();
+</script>
+</body>
+</html>
