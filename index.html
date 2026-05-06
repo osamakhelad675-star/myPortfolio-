@@ -1,808 +1,694 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أسامة | Osama - Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Osama Khaled | Business Development Strategist</title>
 
-    <!-- Google Fonts: Cairo for Arabic -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome 6 for Icons -->
+    <!-- Google Fonts: Inter + Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
-        :root {
-            --bg-deep: #06060e;
-            --bg-surface: #0c0c1a;
-            --blue-primary: #3b7fff;
-            --blue-glow: #4f8fff;
-            --blue-dark: #1a3a6e;
-            --blue-light: #7eb8ff;
-            --white-soft: #e8ecf2;
-            --white-muted: #b0b8c5;
-            --glass-bg: rgba(255, 255, 255, 0.025);
-            --glass-border: rgba(255, 255, 255, 0.07);
-            --glass-border-hover: rgba(255, 255, 255, 0.18);
-            --glass-bg-hover: rgba(255, 255, 255, 0.05);
-            --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.45);
-            --shadow-card-hover: 0 16px 48px rgba(30, 70, 160, 0.3);
-            --radius-lg: 22px;
-            --radius-md: 16px;
-            --radius-sm: 12px;
-            --transition-smooth: 0.35s cubic-bezier(0.25, 0.8, 0.25, 1.2);
-            --transition-soft: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
+        :root {
+            --bg-deep: #050505;
+            --bg-surface: #111111;
+            --gray-primary: #9ca3af;
+            --gray-glow: #6b7280;
+            --gray-accent: #b0b0b0;
+            --white-soft: #e5e7eb;
+            --white-muted: #8d8d8d;
+            --glass-bg: rgba(20, 20, 20, 0.65);
+            --glass-border: rgba(128, 128, 128, 0.3);
+            --glass-border-hover: rgba(160, 160, 160, 0.7);
+            --shadow-card: 0 20px 35px -12px rgba(0,0,0,0.6);
+            --shadow-card-hover: 0 25px 45px -12px rgba(128,128,128,0.25);
+            --radius-lg: 28px;
+            --radius-md: 20px;
+            --transition: 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
         }
 
         body {
-            font-family: 'Cairo', sans-serif;
+            font-family: 'Inter', 'Cairo', sans-serif;
             background: var(--bg-deep);
             color: var(--white-soft);
-            min-height: 100vh;
-            line-height: 1.7;
+            line-height: 1.6;
             overflow-x: hidden;
-            position: relative;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+            min-height: 100vh;
         }
 
-        /* ─────────────────────────────────────
-           PARTICLE CANVAS
-        ───────────────────────────────────── */
-        #particleCanvas {
-            position: fixed;
-            inset: 0;
-            z-index: 1;
-            pointer-events: none;
-            opacity: 0.9;
-        }
-
-        /* ─────────────────────────────────────
-           BACKGROUND ORBS (Futuristic Glow)
-        ───────────────────────────────────── */
-        .bg-orb {
+        /* grayscale orbs - subtle grey fog */
+        .orb {
             position: fixed;
             border-radius: 50%;
             filter: blur(120px);
-            opacity: 0.25;
+            opacity: 0.22;
             pointer-events: none;
             z-index: 0;
-            animation: orbFloat 16s ease-in-out infinite;
+            animation: floatOrb 20s infinite alternate ease-in-out;
         }
-        .bg-orb-1 {
-            width: 550px;
-            height: 550px;
-            background: radial-gradient(circle, rgba(59, 127, 255, 0.55) 0%, transparent 70%);
-            top: -180px;
-            left: -120px;
-            animation-delay: 0s;
-        }
-        .bg-orb-2 {
-            width: 450px;
-            height: 450px;
-            background: radial-gradient(circle, rgba(30, 60, 140, 0.5) 0%, transparent 70%);
-            bottom: -150px;
-            right: -100px;
-            animation-delay: -7s;
-            animation-duration: 19s;
-        }
-        .bg-orb-3 {
-            width: 350px;
-            height: 350px;
-            background: radial-gradient(circle, rgba(79, 143, 255, 0.4) 0%, transparent 70%);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation-delay: -12s;
-            animation-duration: 22s;
+        .orb-1 { width: 60vw; height: 60vw; background: radial-gradient(circle, #2c2c2c, transparent); top: -20%; left: -20%; }
+        .orb-2 { width: 50vw; height: 50vw; background: radial-gradient(circle, #3a3a3a, transparent); bottom: -10%; right: -10%; animation-duration: 25s; }
+        .orb-3 { width: 45vw; height: 45vw; background: radial-gradient(circle, #1f1f1f, transparent); top: 40%; left: 60%; animation-duration: 28s; }
+        @keyframes floatOrb {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(8%, 5%) scale(1.1); }
         }
 
-        @keyframes orbFloat {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            25% { transform: translate(60px, -50px) scale(1.1); }
-            50% { transform: translate(-30px, 40px) scale(0.9); }
-            75% { transform: translate(-50px, -30px) scale(1.05); }
-        }
-
-        /* Subtle grid overlay */
-        .grid-overlay {
+        /* monochrome tech canvas */
+        #techCanvas {
             position: fixed;
-            inset: 0;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             pointer-events: none;
-            z-index: 0;
-            background-image:
-                linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-            background-size: 60px 60px;
-            opacity: 0.5;
+            z-index: 1;
+            opacity: 0.8;
         }
 
-        /* ─────────────────────────────────────
-           MAIN CONTAINER
-        ───────────────────────────────────── */
         .main-container {
             position: relative;
-            z-index: 2;
-            max-width: 1000px;
+            z-index: 10;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 30px 20px 60px;
+            padding: 30px 24px 70px;
         }
 
-        /* ─────────────────────────────────────
-           HERO SECTION
-        ───────────────────────────────────── */
+        /* Hero Section - grayscale */
         .hero {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             text-align: center;
-            padding: 50px 20px 40px;
-            margin-bottom: 30px;
+            padding: 40px 20px 30px;
         }
-        .hero-photo-wrapper {
+        .avatar-wrapper {
             position: relative;
-            width: 170px;
-            height: 170px;
-            margin-bottom: 28px;
-            flex-shrink: 0;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 25px;
         }
-        .hero-photo-glow {
+        .avatar-glow {
             position: absolute;
-            inset: -18px;
+            inset: -12px;
             border-radius: 50%;
-            background: conic-gradient(from 0deg,
-                    transparent 0deg,
-                    rgba(59, 127, 255, 0.5) 90deg,
-                    rgba(79, 143, 255, 0.7) 180deg,
-                    rgba(59, 127, 255, 0.5) 270deg,
-                    transparent 360deg);
-            animation: glowSpin 8s linear infinite;
-            filter: blur(18px);
-            z-index: 0;
+            background: conic-gradient(from 0deg, #4b5563, #9ca3af, #e5e7eb, #4b5563);
+            filter: blur(20px);
+            opacity: 0.45;
+            animation: spinGlow 6s linear infinite;
         }
-        @keyframes glowSpin { to { transform: rotate(360deg); } }
-        .hero-photo-ring {
+        @keyframes spinGlow { to { transform: rotate(360deg); } }
+        .avatar-ring {
             position: absolute;
-            inset: -8px;
+            inset: -5px;
             border-radius: 50%;
-            border: 2px solid rgba(255, 255, 255, 0.15);
-            z-index: 1;
-            animation: ringPulse 3s ease-in-out infinite;
+            border: 1.5px solid rgba(160, 160, 160, 0.6);
+            box-shadow: 0 0 18px rgba(100,100,100,0.4);
+            animation: ringPulse 3s infinite;
         }
         @keyframes ringPulse {
-            0%, 100% { border-color: rgba(255, 255, 255, 0.12); box-shadow: 0 0 20px rgba(59, 127, 255, 0.2); }
-            50% { border-color: rgba(255, 255, 255, 0.28); box-shadow: 0 0 40px rgba(59, 127, 255, 0.45); }
+            0% { transform: scale(0.96); opacity: 0.5; }
+            50% { transform: scale(1.02); border-color: #bcbcbc; opacity: 1; }
+            100% { transform: scale(0.96); opacity: 0.5; }
         }
-        .hero-photo {
-            position: relative;
-            z-index: 2;
+        .avatar {
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            object-fit: cover;
+            background: linear-gradient(145deg, #1a1a1a, #020202);
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(145deg, #1a2a4a 0%, #0d1a30 50%, #0a1525 100%);
-            border: 3px solid rgba(255, 255, 255, 0.2);
             overflow: hidden;
-            transition: var(--transition-smooth);
+            border: 2px solid rgba(255,255,255,0.05);
         }
-        .hero-photo img {
+        .avatar img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 50%;
-            display: block;
+            filter: grayscale(100%);
         }
-        .hero-photo .photo-placeholder {
-            font-size: 62px;
-            color: rgba(255, 255, 255, 0.55);
-            position: absolute;
-            pointer-events: none;
-        }
-        .hero-photo-wrapper:hover .hero-photo {
-            border-color: rgba(255, 255, 255, 0.45);
-            box-shadow: 0 0 50px rgba(59, 127, 255, 0.5);
-        }
-        .hero-photo-wrapper:hover .hero-photo-ring {
-            border-color: rgba(255, 255, 255, 0.35);
-            box-shadow: 0 0 55px rgba(59, 127, 255, 0.55);
-        }
-        .hero-name {
+        .hero h1 {
             font-size: 2.8rem;
             font-weight: 800;
-            letter-spacing: 1px;
-            margin-bottom: 6px;
-            background: linear-gradient(135deg, #ffffff 0%, #c8d8f8 40%, #7eb8ff 100%);
+            background: linear-gradient(135deg, #f9f9f9, #b0b0b0, #e0e0e0);
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
             background-clip: text;
             color: transparent;
+            letter-spacing: -0.5px;
         }
-        .hero-title {
-            font-size: 1.15rem;
-            font-weight: 500;
-            color: var(--white-muted);
-            margin-bottom: 6px;
-            letter-spacing: 0.5px;
+        .hero-tagline {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #c0c0c0;
+            margin-top: 6px;
         }
-        .hero-subtitle {
-            font-size: 0.95rem;
-            font-weight: 400;
-            color: rgba(255, 255, 255, 0.5);
-            max-width: 500px;
-            margin-bottom: 24px;
+        .hero-desc {
+            max-width: 600px;
+            margin: 15px auto 25px;
+            color: #9aa0b0;
         }
-        .social-icons {
+        .social-links {
             display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
+            gap: 18px;
             justify-content: center;
         }
         .social-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
             width: 48px;
             height: 48px;
             border-radius: 50%;
-            background: var(--glass-bg);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid var(--glass-border);
-            color: var(--white-muted);
-            font-size: 1.2rem;
-            text-decoration: none;
-            transition: var(--transition-smooth);
+            background: rgba(25, 25, 35, 0.7);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(140,140,140,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #adadad;
+            font-size: 1.3rem;
+            transition: all 0.3s;
         }
         .social-icon:hover {
             transform: translateY(-5px);
-            border-color: var(--glass-border-hover);
-            box-shadow: var(--shadow-card-hover);
+            border-color: #d4d4d4;
+            color: white;
+            background: rgba(180,180,180,0.2);
+            box-shadow: 0 5px 20px rgba(128,128,128,0.25);
         }
-        .social-icon.linkedin:hover { color: #0a66c2; background: rgba(10,102,194,0.15); border-color: rgba(10,102,194,0.5); box-shadow: 0 8px 30px rgba(10,102,194,0.4); }
-        .social-icon.tiktok:hover { color: #00f2ea; background: rgba(0,242,234,0.12); border-color: rgba(0,242,234,0.45); box-shadow: 0 8px 30px rgba(0,242,234,0.35); }
-        .social-icon.facebook:hover { color: #1877f2; background: rgba(24,119,242,0.15); border-color: rgba(24,119,242,0.5); box-shadow: 0 8px 30px rgba(24,119,242,0.4); }
-        .social-icon.whatsapp:hover { color: #25d366; background: rgba(37,211,102,0.15); border-color: rgba(37,211,102,0.5); box-shadow: 0 8px 30px rgba(37,211,102,0.4); }
 
-        /* ─────────────────────────────────────
-           SECTION TITLES
-        ───────────────────────────────────── */
+        /* section titles - monochrome */
         .section-title {
-            font-size: 1.6rem;
+            font-size: 2rem;
             font-weight: 700;
-            margin-bottom: 28px;
-            text-align: center;
+            background: linear-gradient(120deg, #e5e7eb, #a1a1aa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
             display: inline-block;
-            color: var(--white-soft);
-            letter-spacing: 0.5px;
             position: relative;
         }
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -8px;
+            bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
-            width: 50px;
+            width: 70px;
             height: 3px;
+            background: linear-gradient(90deg, #7e7e7e, #b9b9b9);
             border-radius: 4px;
-            background: linear-gradient(90deg, var(--blue-primary), var(--blue-light), var(--blue-primary));
-            animation: titleLine 3s ease-in-out infinite;
+            animation: lineWidth 3s infinite;
         }
-        @keyframes titleLine {
-            0%, 100% { width: 50px; opacity: 0.8; }
-            50% { width: 80px; opacity: 1; }
+        @keyframes lineWidth {
+            0%,100% { width: 70px; opacity: 0.7; }
+            50% { width: 110px; opacity: 1; }
         }
-        .section-header { text-align: center; margin-bottom: 40px; }
+        .section-header {
+            text-align: center;
+            margin-bottom: 45px;
+        }
 
-        /* ─────────────────────────────────────
-           GLASS CARDS
-        ───────────────────────────────────── */
+        /* Glass card - grayscale tones */
         .glass-card {
             background: var(--glass-bg);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
+            backdrop-filter: blur(12px);
             border: 1px solid var(--glass-border);
             border-radius: var(--radius-lg);
-            padding: 26px 24px;
+            padding: 24px 22px;
+            transition: var(--transition);
             box-shadow: var(--shadow-card);
-            transition: var(--transition-smooth);
-            position: relative;
-            overflow: hidden;
+            height: 100%;
         }
-        .glass-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), rgba(255,255,255,0.15), rgba(255,255,255,0.08), transparent);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-        .glass-card:hover::before { opacity: 1; }
         .glass-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-6px);
             border-color: var(--glass-border-hover);
+            background: rgba(25, 25, 30, 0.8);
             box-shadow: var(--shadow-card-hover);
-            background: var(--glass-bg-hover);
         }
-        .cert-card { cursor: pointer; }
-        .cert-card::after {
-            content: '\f06e';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            position: absolute;
-            top: 14px; left: 18px;
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.2);
-            transition: var(--transition-smooth);
-            pointer-events: none;
-        }
-        .cert-card:hover::after { color: rgba(255,255,255,0.7); transform: scale(1.2); }
         .card-icon {
-            width: 50px; height: 50px;
-            border-radius: 14px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.4rem;
-            margin-bottom: 16px;
-            background: rgba(59,127,255,0.12);
-            color: var(--blue-light);
-            transition: var(--transition-smooth);
+            width: 54px;
+            height: 54px;
+            border-radius: 18px;
+            background: rgba(110, 110, 120, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: #c9c9c9;
+            margin-bottom: 18px;
+            transition: 0.2s;
         }
-        .glass-card:hover .card-icon { background: rgba(59,127,255,0.22); color: #fff; box-shadow: 0 4px 20px rgba(59,127,255,0.35); transform: scale(1.05); }
-        .card-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; color: var(--white-soft); }
-        .card-subtitle { font-size: 0.85rem; color: var(--white-muted); line-height: 1.5; }
+        .glass-card:hover .card-icon {
+            background: rgba(170,170,170,0.25);
+            transform: scale(1.02);
+            color: #f0f0f0;
+        }
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #ececec;
+        }
+        .card-text {
+            font-size: 0.85rem;
+            color: var(--white-muted);
+            line-height: 1.5;
+        }
 
-        /* Lightbox */
-        .lightbox-overlay {
-            position: fixed; inset: 0; z-index: 9999;
-            background: rgba(0,0,0,0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            display: flex; align-items: center; justify-content: center;
-            opacity: 0; pointer-events: none;
-            transition: opacity 0.35s ease;
+        .grid-2col {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 26px;
         }
-        .lightbox-overlay.active { opacity: 1; pointer-events: all; }
+        .skills-grid {
+            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+        }
+
+        .about-card {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.05rem;
+        }
+        .highlight {
+            color: #cacaca;
+            font-weight: 600;
+        }
+
+        /* clickable cards */
+        .clickable {
+            cursor: pointer;
+        }
+
+        /* lightbox monochrome */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.95);
+            backdrop-filter: blur(28px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+        }
+        .lightbox.active {
+            opacity: 1;
+            visibility: visible;
+        }
         .lightbox-content {
-            position: relative; max-width: 90vw; max-height: 85vh;
-            background: var(--bg-surface);
-            border: 1px solid var(--glass-border-hover);
-            border-radius: var(--radius-lg);
-            padding: 16px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 80px rgba(59,127,255,0.2);
-            transform: scale(0.9);
-            transition: transform 0.4s cubic-bezier(0.25,0.8,0.25,1.2);
+            background: #121212;
+            border-radius: 32px;
+            padding: 12px;
+            border: 1px solid rgba(160,160,160,0.5);
+            max-width: 85vw;
+            max-height: 85vh;
         }
-        .lightbox-overlay.active .lightbox-content { transform: scale(1); }
-        .lightbox-content img { max-width: 100%; max-height: 75vh; border-radius: 12px; display: block; }
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 70vh;
+            border-radius: 20px;
+            filter: grayscale(100%);
+        }
         .lightbox-close {
-            position: absolute; top: -44px; right: 0;
-            width: 40px; height: 40px; border-radius: 50%;
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.25);
-            color: #fff; font-size: 1.1rem; cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-            transition: var(--transition-smooth);
+            position: absolute;
+            top: 24px;
+            right: 32px;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            color: #cccccc;
+            cursor: pointer;
+            transition: 0.2s;
         }
-        .lightbox-close:hover { background: rgba(255,60,60,0.25); border-color: rgba(255,100,100,0.6); box-shadow: 0 6px 24px rgba(255,50,50,0.35); transform: rotate(90deg); }
-        .lightbox-caption { position: absolute; bottom: -40px; left:0; right:0; text-align: center; color: rgba(255,255,255,0.7); font-size:0.85rem; }
-
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-        .cards-grid.skills-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
-        .section-block { margin-bottom: 50px; }
-        .about-card { max-width: 750px; margin: 0 auto; text-align: center; font-size: 1.05rem; line-height: 1.9; color: var(--white-muted); }
-        .about-card .highlight { color: var(--blue-light); font-weight: 600; }
-        .education-card { max-width: 500px; margin: 0 auto; text-align: center; display: flex; align-items: center; gap: 16px; justify-content: center; flex-wrap: wrap; }
-        .education-card .card-icon { margin-bottom: 0; }
-        .site-footer { text-align: center; padding: 30px 20px; color: rgba(255,255,255,0.35); font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 30px; }
-        .site-footer span { color: var(--blue-light); }
-
-        .reveal { opacity: 0; transform: translateY(35px); transition: opacity 0.7s ease, transform 0.7s ease; }
-        .reveal.revealed { opacity: 1; transform: translateY(0); }
-
-        @media (max-width: 768px) {
-            .hero-name { font-size: 2rem; }
-            .hero-title { font-size: 1rem; }
-            .hero-photo-wrapper { width: 130px; height: 130px; }
-            .section-title { font-size: 1.3rem; }
-            .cards-grid { grid-template-columns: 1fr; }
-            .cards-grid.skills-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
-            .glass-card { padding: 18px 16px; border-radius: var(--radius-md); }
-            .social-icon { width: 40px; height: 40px; font-size: 1rem; }
+        .lightbox-close:hover {
+            color: white;
         }
-        @media (max-width: 480px) {
-            .cards-grid.skills-grid { grid-template-columns: 1fr 1fr; }
-            .hero-name { font-size: 1.6rem; }
-            .main-container { padding: 15px 10px 40px; }
+
+        footer {
+            text-align: center;
+            margin-top: 70px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: #6c6f7e;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 0.7s ease;
+        }
+        .reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 680px) {
+            .hero h1 { font-size: 2rem; }
+            .section-title { font-size: 1.6rem; }
+            .grid-2col { gap: 18px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="bg-orb bg-orb-1"></div>
-    <div class="bg-orb bg-orb-2"></div>
-    <div class="bg-orb bg-orb-3"></div>
-    <div class="grid-overlay"></div>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+<canvas id="techCanvas"></canvas>
 
-    <!-- TECH NETWORK CANVAS -->
-    <canvas id="particleCanvas" aria-hidden="true"></canvas>
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox">
+    <div class="lightbox-content">
+        <img id="lightboxImg" src="" alt="Preview">
+        <button class="lightbox-close" id="closeLightboxBtn"><i class="fas fa-times-circle"></i></button>
+    </div>
+</div>
 
-    <!-- LIGHTBOX -->
-    <div class="lightbox-overlay" id="lightboxOverlay" aria-hidden="true">
-        <div class="lightbox-content">
-            <button class="lightbox-close" id="lightboxClose" aria-label="إغلاق"><i class="fa-solid fa-xmark"></i></button>
-            <img src="" alt="شهادة" id="lightboxImg">
-            <span class="lightbox-caption" id="lightboxCaption"></span>
+<div class="main-container">
+    <!-- Hero Section -->
+    <section class="hero reveal">
+        <div class="avatar-wrapper">
+            <div class="avatar-glow"></div>
+            <div class="avatar-ring"></div>
+            <div class="avatar">
+                <img src="osama.jpg" alt="Osama Khaled" onerror="this.src='https://ui-avatars.com/api/?background=1a1a1a&color=c0c0c0&bold=true&size=150&name=Osama+K';">
+            </div>
         </div>
-    </div>
+        <h1>Osama Khaled</h1>
+        <div class="hero-tagline">Business Development Strategist</div>
+        <p class="hero-desc">Passionate about transforming ideas into structured business models, market expansion strategies, and data-driven growth plans. Academic excellence in business strategy and entrepreneurship.</p>
+        <div class="social-links">
+            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fas fa-envelope"></i></a>
+        </div>
+    </section>
 
-    <div class="main-container">
+    <!-- Professional Summary - no work experience, academic focus, removed "portfolio" word -->
+    <section class="reveal">
+        <div class="section-header">
+            <h2 class="section-title">Professional Profile</h2>
+        </div>
+        <div class="glass-card about-card">
+            <p>Dedicated to the science of <span class="highlight">Business Development</span> — equipped with academic training in strategic planning, market analysis, sales methodologies, and corporate growth frameworks. My academic journey and case study simulations reflect <span class="highlight">deep theoretical knowledge and applied strategic insights</span>, not professional work experience. I continuously refine my skills through advanced business courses and real-world project simulations.</p>
+        </div>
+    </section>
 
-        <!-- HERO -->
-        <section class="hero reveal">
-            <div class="hero-photo-wrapper">
-                <div class="hero-photo-glow"></div>
-                <div class="hero-photo-ring"></div>
-                <div class="hero-photo" id="heroPhotoContainer">
-                    <img src="osama.jpg" alt="أسامة" id="heroImg"
-                         onerror="this.style.display='none'; document.getElementById('photoPlaceholder').style.display='flex';"
-                         onload="this.style.display='block'; document.getElementById('photoPlaceholder').style.display='none';"
-                         style="display:block;">
-                    <i class="fa-solid fa-user photo-placeholder" id="photoPlaceholder" style="display:none; align-items:center; justify-content:center; width:100%; height:100%;"></i>
-                </div>
+    <!-- Certificates (no feasibility study) - no portfolio wording -->
+    <section class="reveal">
+        <div class="section-header">
+            <h2 class="section-title">Certifications & Training</h2>
+            <p style="color:#9b9b9b; font-size:0.8rem;"><i class="fas fa-search-plus"></i> Click any card to view certificate</p>
+        </div>
+        <div class="grid-2col">
+            <div class="glass-card clickable" data-img="cert_bd_advanced.jpg" data-name="Advanced Business Development">
+                <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                <h3 class="card-title">Advanced Business Development</h3>
+                <div class="card-text">Growth strategies · Strategic partnerships · Value proposition design</div>
             </div>
-            <h1 class="hero-name">أسامة</h1>
-            <p class="hero-title">تطوير الأعمال · التسويق · المبيعات · التجارة الإلكترونية</p>
-            <p class="hero-subtitle">طالب بكلية التجارة، أحول المعرفة إلى نتائج عملية على أرض الواقع</p>
-            <div class="social-icons">
-                <a href="https://www.linkedin.com/in/your-linkedin" target="_blank" rel="noopener" class="social-icon linkedin" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                <a href="https://www.tiktok.com/@your-tiktok" target="_blank" rel="noopener" class="social-icon tiktok" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-                <a href="https://www.facebook.com/your-facebook" target="_blank" rel="noopener" class="social-icon facebook" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="https://wa.me/201000000000" target="_blank" rel="noopener" class="social-icon whatsapp" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <div class="glass-card clickable" data-img="cert_sales_strategy.jpg" data-name="Strategic Sales & Negotiation">
+                <div class="card-icon"><i class="fas fa-handshake"></i></div>
+                <h3 class="card-title">Strategic Sales & Negotiation</h3>
+                <div class="card-text">B2B sales frameworks · negotiation tactics · closing techniques</div>
             </div>
-        </section>
-
-        <!-- OBJECTIVE -->
-        <section class="section-block reveal">
-            <div class="section-header"><h2 class="section-title">الهدف الوظيفي</h2></div>
-            <div class="glass-card about-card">
-                <p>أبحث عن فرصة <span class="highlight">عمل أو تدريب</span> في مجالات <span class="highlight">تطوير الأعمال</span>، <span class="highlight">التسويق</span>، أو <span class="highlight">التجارة الإلكترونية</span>، حيث أستطيع <span class="highlight">تقديم قيمة حقيقية</span> وتطوير مهاراتي المهنية في بيئة عملية محفزة تدفعني للنمو والتطور المستمر.</p>
+            <div class="glass-card clickable" data-img="cert_marketing_analytics.jpg" data-name="Marketing Analytics & Growth">
+                <div class="card-icon"><i class="fas fa-chart-simple"></i></div>
+                <h3 class="card-title">Marketing Analytics & Growth</h3>
+                <div class="card-text">Data-driven marketing · customer acquisition · ROI analysis</div>
             </div>
-        </section>
-
-        <!-- EDUCATION -->
-        <section class="section-block reveal">
-            <div class="section-header"><h2 class="section-title">التعليم</h2></div>
-            <div class="glass-card education-card">
-                <div class="card-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-                <div><h3 class="card-title">طالب في كلية تجارة</h3><p class="card-subtitle">كلية التجارة · تخصص إدارة الأعمال</p></div>
+            <div class="glass-card clickable" data-img="cert_corporate_strategy.jpg" data-name="Corporate Strategy & Innovation">
+                <div class="card-icon"><i class="fas fa-building"></i></div>
+                <h3 class="card-title">Corporate Strategy & Innovation</h3>
+                <div class="card-text">Strategic management · business model innovation · competitive positioning</div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- CERTIFICATES (clickable) -->
-        <section class="section-block reveal">
-            <div class="section-header">
-                <h2 class="section-title">الشهادات والتدريبات</h2>
-                <p style="color:rgba(255,255,255,0.4); font-size:0.8rem; margin-top:4px;"><i class="fa-solid fa-hand-pointer"></i> اضغط على أي شهادة لعرض الصورة</p>
+    <!-- Academic Projects & Case Studies - no mention of portfolio -->
+    <section class="reveal">
+        <div class="section-header">
+            <h2 class="section-title">Academic Projects & Case Studies</h2>
+            <p style="color:#9b9b9b;"><i class="fas fa-microchip"></i> Simulated business scenarios & strategic plans</p>
+        </div>
+        <div class="grid-2col">
+            <div class="glass-card clickable" data-project="true" data-img="project_growth_model.jpg" data-name="Growth Model for a Fintech Startup">
+                <div class="card-icon"><i class="fas fa-rocket"></i></div>
+                <h3 class="card-title">Fintech Expansion Strategy</h3>
+                <div class="card-text">Developed a full go-to-market plan, customer segmentation, and KPIs for a simulated fintech.</div>
             </div>
-            <div class="cards-grid">
-                <div class="glass-card cert-card" data-cert-img="cert-business-development.jpg" data-cert-name="شهادة تطوير الأعمال">
-                    <div class="card-icon"><i class="fa-solid fa-rocket"></i></div>
-                    <h3 class="card-title">تطوير الأعمال</h3><p class="card-subtitle">Business Development Certification</p>
-                </div>
-                <div class="glass-card cert-card" data-cert-img="cert-marketing.jpg" data-cert-name="شهادة التسويق">
-                    <div class="card-icon"><i class="fa-solid fa-bullhorn"></i></div>
-                    <h3 class="card-title">التسويق</h3><p class="card-subtitle">Marketing Certification</p>
-                </div>
-                <div class="glass-card cert-card" data-cert-img="cert-sales.jpg" data-cert-name="شهادة المبيعات">
-                    <div class="card-icon"><i class="fa-solid fa-handshake"></i></div>
-                    <h3 class="card-title">المبيعات</h3><p class="card-subtitle">Sales Certification</p>
-                </div>
-                <div class="glass-card cert-card" data-cert-img="cert-business-fundamentals.jpg" data-cert-name="أساسيات إدارة الأعمال">
-                    <div class="card-icon"><i class="fa-solid fa-briefcase"></i></div>
-                    <h3 class="card-title">أساسيات إدارة الأعمال</h3><p class="card-subtitle">Business Fundamentals Certification</p>
-                </div>
-                <div class="glass-card cert-card" data-cert-img="cert-feasibility-study.jpg" data-cert-name="دراسة الجدوى وتحليل السوق">
-                    <div class="card-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
-                    <h3 class="card-title">دراسة الجدوى وتحليل السوق</h3><p class="card-subtitle">Feasibility Study & Market Analysis Training</p>
-                </div>
-                <div class="glass-card cert-card" data-cert-img="cert-customer-experience.jpg" data-cert-name="إدارة تجربة العملاء">
-                    <div class="card-icon"><i class="fa-solid fa-face-smile"></i></div>
-                    <h3 class="card-title">إدارة تجربة العملاء</h3>
-                    <p class="card-subtitle">Customer Experience Management Certification</p>
-                </div>
+            <div class="glass-card clickable" data-project="true" data-img="project_market_entry.jpg" data-name="Market Entry Strategy - ASEAN">
+                <div class="card-icon"><i class="fas fa-globe-americas"></i></div>
+                <h3 class="card-title">Market Entry: ASEAN Region</h3>
+                <div class="card-text">Comprehensive competitive landscape analysis + strategic alliance framework.</div>
             </div>
-        </section>
-
-        <!-- SKILLS -->
-        <section class="section-block reveal">
-            <div class="section-header"><h2 class="section-title">المهارات الأساسية</h2></div>
-            <div class="cards-grid skills-grid">
-                <div class="glass-card"><div class="card-icon"><i class="fa-solid fa-seedling"></i></div><h3 class="card-title">تطوير وتنمية المشاريع</h3><p class="card-subtitle">تنمية الشركات والمشاريع الناشئة</p></div>
-                <div class="glass-card"><div class="card-icon"><i class="fa-solid fa-file-lines"></i></div><h3 class="card-title">إعداد خطط تسويقية</h3><p class="card-subtitle">خطط تسويقية فعالة ومتكاملة</p></div>
-                <div class="glass-card"><div class="card-icon"><i class="fa-solid fa-handshake-simple"></i></div><h3 class="card-title">البيع والتفاوض</h3><p class="card-subtitle">مهارات البيع وإغلاق الصفقات</p></div>
-                <div class="glass-card"><div class="card-icon"><i class="fa-solid fa-chart-bar"></i></div><h3 class="card-title">دراسة السوق</h3><p class="card-subtitle">تحليل السوق والمنافسين</p></div>
-                <div class="glass-card"><div class="card-icon"><i class="fa-solid fa-clipboard-check"></i></div><h3 class="card-title">دراسات الجدوى</h3><p class="card-subtitle">إعداد دراسات جدوى احترافية</p></div>
-                <div class="glass-card"><div class="card-icon"><i class="fa-solid fa-arrow-trend-up"></i></div><h3 class="card-title">خطط النمو</h3><p class="card-subtitle">بناء خطط نمو للمشاريع الناشئة</p></div>
-                <div class="glass-card"><div class="card-icon"><i class="fa-solid fa-headset"></i></div><h3 class="card-title">خدمة العملاء</h3><p class="card-subtitle">إدارة علاقات العملاء</p></div>
-                <div class="glass-card"><div class="card-icon"><i class="fa-solid fa-brain"></i></div><h3 class="card-title">التفكير التحليلي</h3><p class="card-subtitle">حل المشكلات والتفكير التحليلي</p></div>
+            <div class="glass-card clickable" data-project="true" data-img="project_sales_funnel.jpg" data-name="Sales Funnel Optimization">
+                <div class="card-icon"><i class="fas fa-funnel-dollar"></i></div>
+                <h3 class="card-title">B2B Sales Funnel Optimization</h3>
+                <div class="card-text">Designed a lead nurturing system and conversion strategy (academic simulation).</div>
             </div>
-        </section>
+            <div class="glass-card clickable" data-project="true" data-img="project_business_plan.jpg" data-name="Business Plan Competition Winner">
+                <div class="card-icon"><i class="fas fa-trophy"></i></div>
+                <h3 class="card-title">Business Plan: Sustainable Packaging</h3>
+                <div class="card-text">Award-winning business model with financial projections and investor pitch deck.</div>
+            </div>
+        </div>
+    </section>
 
-        <footer class="site-footer reveal"><p>© 2025 <span>أسامة</span> · جميع الحقوق محفوظة · صُنع بحب وإتقان</p></footer>
-    </div>
+    <!-- Core competencies - black & white -->
+    <section class="reveal">
+        <div class="section-header">
+            <h2 class="section-title">Core Competencies</h2>
+        </div>
+        <div class="grid-2col skills-grid">
+            <div class="glass-card"><div class="card-icon"><i class="fas fa-chart-line"></i></div><h3 class="card-title">Business Development</h3><div class="card-text">Strategic partnerships, market expansion, growth hacking</div></div>
+            <div class="glass-card"><div class="card-icon"><i class="fas fa-chart-pie"></i></div><h3 class="card-title">Market Research & Analysis</h3><div class="card-text">Competitor analysis, TAM/SAM/SOM, trend forecasting</div></div>
+            <div class="glass-card"><div class="card-icon"><i class="fas fa-handshake"></i></div><h3 class="card-title">Sales Strategy</h3><div class="card-text">Value selling, pipeline management, CRM workflows</div></div>
+            <div class="glass-card"><div class="card-icon"><i class="fas fa-file-alt"></i></div><h3 class="card-title">Business Modeling</h3><div class="card-text">Lean canvas, BMC, value proposition design</div></div>
+            <div class="glass-card"><div class="card-icon"><i class="fas fa-chart-simple"></i></div><h3 class="card-title">Strategic Planning</h3><div class="card-text">OKRs, SWOT analysis, long-term vision mapping</div></div>
+            <div class="glass-card"><div class="card-icon"><i class="fas fa-bullhorn"></i></div><h3 class="card-title">Go-to-Market Strategy</h3><div class="card-text">Launch planning, channel strategy, adoption frameworks</div></div>
+        </div>
+    </section>
 
-    <script>
-        (function() {
-            // Reveal animations
-            const revealEls = document.querySelectorAll('.reveal');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => { if(entry.isIntersecting) { entry.target.classList.add('revealed'); observer.unobserve(entry.target); } });
-            }, { rootMargin: '0px 0px -60px 0px', threshold: 0.12 });
-            revealEls.forEach(el => observer.observe(el));
-            window.addEventListener('DOMContentLoaded', () => {
-                revealEls.forEach(el => { const rect = el.getBoundingClientRect(); if(rect.top < window.innerHeight && rect.bottom > 0) setTimeout(() => { el.classList.add('revealed'); observer.unobserve(el); }, 80); });
-            });
+    <footer class="reveal">
+        <p>© 2026 <span style="color:#b0b0b0;">Osama Khaled</span> · Built with precision · Focus on Business Development Excellence</p>
+    </footer>
+</div>
 
-            // Hero parallax glow
-            const heroWrapper = document.querySelector('.hero-photo-wrapper');
-            const glowRing = document.querySelector('.hero-photo-glow');
-            if(heroWrapper && glowRing && window.innerWidth > 768) {
-                heroWrapper.addEventListener('mousemove', (e) => {
-                    const rect = heroWrapper.getBoundingClientRect();
-                    const x = e.clientX - rect.left - rect.width/2, y = e.clientY - rect.top - rect.height/2;
-                    glowRing.style.transform = `translate(${x*0.08}px, ${y*0.08}px)`;
-                });
-                heroWrapper.addEventListener('mouseleave', () => { glowRing.style.transform = 'translate(0,0)'; glowRing.style.transition = 'transform 0.6s ease-out'; setTimeout(() => glowRing.style.transition = 'none', 600); });
-            }
-
-            // Lightbox
-            const overlay = document.getElementById('lightboxOverlay');
-            const img = document.getElementById('lightboxImg');
-            const caption = document.getElementById('lightboxCaption');
-            const closeBtn = document.getElementById('lightboxClose');
-            function openLightbox(src, cap) { img.src=src; caption.textContent=cap||''; overlay.classList.add('active'); overlay.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
-            function closeLightbox() { overlay.classList.remove('active'); overlay.setAttribute('aria-hidden','true'); document.body.style.overflow=''; setTimeout(() => { img.src=''; caption.textContent=''; }, 400); }
-            document.querySelectorAll('.cert-card').forEach(card => {
-                card.addEventListener('click', function() {
-                    const src = this.getAttribute('data-cert-img');
-                    const name = this.getAttribute('data-cert-name');
-                    if(src) openLightbox(src, name);
-                });
-                card.setAttribute('tabindex','0'); card.setAttribute('role','button');
-                card.addEventListener('keydown', (e) => { if(e.key==='Enter'||e.key===' ') { e.preventDefault(); const s=card.getAttribute('data-cert-img'); const n=card.getAttribute('data-cert-name'); if(s) openLightbox(s,n); } });
-            });
-            closeBtn.addEventListener('click', closeLightbox);
-            overlay.addEventListener('click', (e) => { if(e.target===overlay) closeLightbox(); });
-            document.addEventListener('keydown', (e) => { if(e.key==='Escape' && overlay.classList.contains('active')) closeLightbox(); });
-            img.addEventListener('error', function() {
-                this.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200"><rect width="300" height="200" fill="%231a1a30" rx="12"/><text x="150" y="90" text-anchor="middle" fill="%23ffffff60" font-size="14" font-family="Cairo,sans-serif">الصورة غير متوفرة</text></svg>';
-                caption.textContent = '⚠️ الرجاء تحديث مسار الصورة';
-            });
-
-            // ─────────────────────────────────────
-            // TECH NETWORK MESH (شبكة تكنولوجيا)
-            // ─────────────────────────────────────
-            const canvas = document.getElementById('particleCanvas');
-            const ctx = canvas.getContext('2d');
-
-            let nodes = [];
-            let edges = [];
-            let packets = [];
-            const PACKET_COUNT = 18;
-            const NODE_RADIUS = 2.5;
-            const GRID_SPACING = 85;
-            let mouseX = -500, mouseY = -500;
-            let animationId;
-
-            function resizeCanvas() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-                buildGrid();
-            }
-            window.addEventListener('resize', resizeCanvas);
-
-            document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
-            document.addEventListener('mouseleave', () => { mouseX = -500; mouseY = -500; });
-            document.addEventListener('touchmove', e => { if(e.touches.length>0) { mouseX=e.touches[0].clientX; mouseY=e.touches[0].clientY; } }, {passive:true});
-            document.addEventListener('touchend', () => { mouseX=-500; mouseY=-500; });
-
-            function buildGrid() {
-                nodes = [];
-                edges = [];
-                const cols = Math.floor(canvas.width / GRID_SPACING) + 2;
-                const rows = Math.floor(canvas.height / GRID_SPACING) + 2;
-                const offsetX = (canvas.width - (cols-1)*GRID_SPACING)/2;
-                const offsetY = (canvas.height - (rows-1)*GRID_SPACING)/2;
-
-                for (let r=0; r<rows; r++) {
-                    for (let c=0; c<cols; c++) {
-                        let x = offsetX + c*GRID_SPACING + (Math.random()-0.5)*10;
-                        let y = offsetY + r*GRID_SPACING + (Math.random()-0.5)*10;
-                        nodes.push({
-                            x, y,
-                            baseX: x, baseY: y,
-                            pulse: Math.random()*Math.PI*2,
-                            pulseSpeed: 0.02 + Math.random()*0.03
-                        });
-                    }
+<script>
+    (function(){
+        // reveal animation
+        const reveals = document.querySelectorAll('.reveal');
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if(e.isIntersecting) {
+                    e.target.classList.add('revealed');
+                    obs.unobserve(e.target);
                 }
+            });
+        }, {threshold:0.1, rootMargin:"0px 0px -40px 0px"});
+        reveals.forEach(r => obs.observe(r));
 
-                for (let r=0; r<rows; r++) {
-                    for (let c=0; c<cols; c++) {
-                        const idx = r*cols + c;
-                        if (c+1 < cols) edges.push({ from: idx, to: r*cols + (c+1) });
-                        if (r+1 < rows) edges.push({ from: idx, to: (r+1)*cols + c });
-                    }
+        // Lightbox system for certificates & projects
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const closeLightbox = () => {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+        document.getElementById('closeLightboxBtn').addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeLightbox(); });
+
+        const clickableCards = document.querySelectorAll('.clickable');
+        clickableCards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                e.stopPropagation();
+                let imgSrc = card.getAttribute('data-img');
+                let name = card.getAttribute('data-name');
+                if (!imgSrc) {
+                    const titleEl = card.querySelector('.card-title');
+                    const fallbackText = titleEl ? titleEl.innerText : 'Document';
+                    imgSrc = `https://placehold.co/800x600/1a1a1a/aaaaaa?text=${encodeURIComponent(fallbackText)}`;
                 }
+                lightboxImg.src = imgSrc;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
 
-                initPackets();
-            }
+        // --- MONOCHROME TECH NETWORK CANVAS (grayscale, futuristic aesthetic) ---
+        const canvas = document.getElementById('techCanvas');
+        const ctx = canvas.getContext('2d');
+        let w, h;
+        let nodes = [];
+        let edges = [];
+        let dataPackets = [];
+        let mouseX = -1000, mouseY = -1000;
+        let frame;
 
-            function initPackets() {
-                packets = [];
-                for (let i=0; i<PACKET_COUNT; i++) {
-                    if (edges.length === 0) continue;
-                    const edgeIdx = Math.floor(Math.random() * edges.length);
-                    const edge = edges[edgeIdx];
-                    const fromNode = nodes[edge.from];
-                    const toNode = nodes[edge.to];
-                    packets.push({
-                        from: edge.from,
-                        to: edge.to,
-                        x: fromNode.x,
-                        y: fromNode.y,
-                        progress: Math.random(),
-                        speed: 0.002 + Math.random()*0.006,
-                        edgeIdx: edgeIdx
+        function resizeCanvas() {
+            w = window.innerWidth;
+            h = window.innerHeight;
+            canvas.width = w;
+            canvas.height = h;
+            initNetwork();
+        }
+
+        function initNetwork() {
+            nodes = [];
+            edges = [];
+            const cols = Math.floor(w / 110) + 2;
+            const rows = Math.floor(h / 110) + 2;
+            const startX = (w - (cols-1)*110) / 2;
+            const startY = (h - (rows-1)*110) / 2;
+            for (let i=0; i<rows; i++) {
+                for (let j=0; j<cols; j++) {
+                    let x = startX + j*110 + (Math.sin(i*0.7)*2);
+                    let y = startY + i*110 + (Math.cos(j*0.5)*2);
+                    nodes.push({
+                        x, y, origX: x, origY: y,
+                        phaseX: Math.random()*Math.PI*2,
+                        phaseY: Math.random()*Math.PI*2,
+                        glow: 0
                     });
                 }
             }
-
-            function animate() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-                const time = Date.now() * 0.001;
-                nodes.forEach(node => {
-                    node.x = node.baseX + Math.sin(time + node.pulse) * 1.8;
-                    node.y = node.baseY + Math.cos(time + node.pulse*1.3) * 1.8;
+            // connect neighbors
+            for (let i=0; i<rows; i++) {
+                for (let j=0; j<cols; j++) {
+                    const idx = i*cols + j;
+                    if (j+1 < cols) edges.push({ from: idx, to: i*cols + (j+1) });
+                    if (i+1 < rows) edges.push({ from: idx, to: (i+1)*cols + j });
+                }
+            }
+            // create data packets (white / grey flow)
+            dataPackets = [];
+            for (let p=0; p<32; p++) {
+                if (edges.length === 0) break;
+                const randEdge = edges[Math.floor(Math.random() * edges.length)];
+                dataPackets.push({
+                    fromIdx: randEdge.from,
+                    toIdx: randEdge.to,
+                    progress: Math.random(),
+                    speed: 0.003 + Math.random() * 0.009,
+                    size: 2.2,
+                    color: `rgba(210, 210, 215, 0.9)`
                 });
+            }
+        }
 
-                // Edges
-                ctx.save();
-                ctx.strokeStyle = 'rgba(59,127,255,0.16)';
+        window.addEventListener('resize', () => { resizeCanvas(); });
+        document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
+        document.addEventListener('touchmove', (e) => { if(e.touches[0]) { mouseX = e.touches[0].clientX; mouseY = e.touches[0].clientY; } });
+        document.addEventListener('touchend', () => { mouseX = -1000; mouseY = -1000; });
+
+        function animateNetwork() {
+            if (!ctx) return;
+            ctx.clearRect(0, 0, w, h);
+            const time = Date.now() * 0.002;
+            // update node positions (smooth wave)
+            for (let n of nodes) {
+                n.x = n.origX + Math.sin(time * 0.6 + n.phaseX) * 1.4;
+                n.y = n.origY + Math.cos(time * 0.5 + n.phaseY) * 1.4;
+                const dx = mouseX - n.x;
+                const dy = mouseY - n.y;
+                const dist = Math.hypot(dx, dy);
+                if (dist < 120) {
+                    const force = (1 - dist/120) * 0.25;
+                    n.x -= dx * force * 0.1;
+                    n.y -= dy * force * 0.1;
+                    n.glow = force * 0.7;
+                } else {
+                    n.glow = Math.max(0, n.glow - 0.03);
+                }
+            }
+            // draw connections (edges) - grayscale
+            for (let e of edges) {
+                const n1 = nodes[e.from];
+                const n2 = nodes[e.to];
+                if (!n1 || !n2) continue;
+                const dist = Math.hypot(n1.x - n2.x, n1.y - n2.y);
+                let opacity = 0.2 + Math.sin(time * 1.5 + dist * 0.02) * 0.06;
+                if (dist > 140) opacity *= 0.4;
+                ctx.beginPath();
+                ctx.moveTo(n1.x, n1.y);
+                ctx.lineTo(n2.x, n2.y);
+                ctx.strokeStyle = `rgba(150, 150, 160, ${opacity*1.1})`;
+                ctx.lineWidth = 1.2;
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(n1.x, n1.y);
+                ctx.lineTo(n2.x, n2.y);
+                ctx.strokeStyle = `rgba(100, 100, 110, ${opacity*0.8})`;
                 ctx.lineWidth = 0.7;
-                edges.forEach(edge => {
-                    const from = nodes[edge.from];
-                    const to = nodes[edge.to];
-                    if (!from || !to) return;
-                    ctx.beginPath();
-                    ctx.moveTo(from.x, from.y);
-                    ctx.lineTo(to.x, to.y);
-                    ctx.stroke();
-                });
-                ctx.restore();
-
-                // Nodes
-                nodes.forEach(node => {
-                    const dx = node.x - mouseX;
-                    const dy = node.y - mouseY;
-                    const distToMouse = Math.sqrt(dx*dx+dy*dy);
-                    let glowFactor = 0;
-                    const MOUSE_RADIUS = 130;
-                    if (distToMouse < MOUSE_RADIUS) {
-                        glowFactor = (1 - distToMouse/MOUSE_RADIUS);
-                    }
-
-                    const baseAlpha = 0.55 + Math.sin(time + node.pulse)*0.15;
-                    const alpha = Math.min(0.9, baseAlpha + glowFactor*0.35);
-                    const size = NODE_RADIUS + glowFactor * 1.8;
-
-                    ctx.save();
-                    const grad = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, size*4);
-                    grad.addColorStop(0, `rgba(79,143,255,${alpha*0.6})`);
-                    grad.addColorStop(1, 'transparent');
-                    ctx.fillStyle = grad;
-                    ctx.beginPath();
-                    ctx.arc(node.x, node.y, size*4, 0, Math.PI*2);
-                    ctx.fill();
-
-                    ctx.fillStyle = `rgba(180,215,255,${alpha})`;
-                    ctx.beginPath();
-                    ctx.arc(node.x, node.y, size, 0, Math.PI*2);
-                    ctx.fill();
-
-                    if (glowFactor > 0.2) {
-                        ctx.fillStyle = `rgba(255,255,255,${glowFactor*0.7})`;
-                        ctx.beginPath();
-                        ctx.arc(node.x, node.y, size*0.6, 0, Math.PI*2);
-                        ctx.fill();
-                    }
-                    ctx.restore();
-                });
-
-                // Packets
-                packets.forEach(packet => {
-                    const edge = edges[packet.edgeIdx];
-                    if (!edge || !nodes[edge.from] || !nodes[edge.to]) {
-                        if (edges.length > 0) {
-                            const newIdx = Math.floor(Math.random()*edges.length);
-                            packet.edgeIdx = newIdx;
-                            packet.from = edges[newIdx].from;
-                            packet.to = edges[newIdx].to;
-                        }
-                        return;
-                    }
-                    const from = nodes[edge.from];
-                    const to = nodes[edge.to];
-                    packet.progress += packet.speed;
-                    if (packet.progress >= 1.0) {
-                        packet.progress = 0;
-                        if (Math.random() < 0.3 && edges.length > 0) {
-                            const newIdx = Math.floor(Math.random()*edges.length);
-                            packet.edgeIdx = newIdx;
-                            packet.from = edges[newIdx].from;
-                            packet.to = edges[newIdx].to;
-                        }
-                    }
-                    const t = packet.progress;
-                    packet.x = from.x + (to.x - from.x) * t;
-                    packet.y = from.y + (to.y - from.y) * t;
-
-                    ctx.save();
-                    const packetGlow = ctx.createRadialGradient(packet.x, packet.y, 0, packet.x, packet.y, 6);
-                    packetGlow.addColorStop(0, 'rgba(180,230,255,0.9)');
-                    packetGlow.addColorStop(0.5, 'rgba(59,127,255,0.5)');
-                    packetGlow.addColorStop(1, 'transparent');
-                    ctx.fillStyle = packetGlow;
-                    ctx.beginPath();
-                    ctx.arc(packet.x, packet.y, 6, 0, Math.PI*2);
-                    ctx.fill();
-                    ctx.fillStyle = '#ffffff';
-                    ctx.beginPath();
-                    ctx.arc(packet.x, packet.y, 1.8, 0, Math.PI*2);
-                    ctx.fill();
-                    ctx.restore();
-                });
-
-                if (packets.length < PACKET_COUNT && edges.length > 0) {
-                    const edgeIdx = Math.floor(Math.random()*edges.length);
-                    const edge = edges[edgeIdx];
-                    packets.push({
-                        from: edge.from,
-                        to: edge.to,
-                        x: nodes[edge.from].x,
-                        y: nodes[edge.from].y,
-                        progress: 0,
-                        speed: 0.002 + Math.random()*0.006,
-                        edgeIdx: edgeIdx
-                    });
-                }
-
-                animationId = requestAnimationFrame(animate);
+                ctx.stroke();
             }
-
-            resizeCanvas();
-            animate();
-
-            console.log('%c✨ أهلاً بك في بورتفوليو أسامة | Osama Portfolio %c🚀', 'color:#7eb8ff; font-size:1.1rem; font-weight:bold;', 'color:#fff;');
-            console.log('%c🌐 شبكة تكنولوجيا تفاعلية | Tech Network Mesh Active', 'color:#4f8fff;');
-            console.log('%c✅ جميع العناصر جاهزة', 'color:#25d366;');
-        })();
-    </script>
+            // draw nodes - white/grey
+            for (let n of nodes) {
+                const rad = 2.6 + n.glow * 2.0;
+                ctx.shadowBlur = 12;
+                ctx.shadowColor = `rgba(130, 130, 140, 0.6)`;
+                ctx.beginPath();
+                ctx.arc(n.x, n.y, rad, 0, Math.PI*2);
+                ctx.fillStyle = `rgba(170, 170, 180, ${0.6 + n.glow*0.3})`;
+                ctx.fill();
+                ctx.beginPath();
+                ctx.arc(n.x, n.y, rad*0.45, 0, Math.PI*2);
+                ctx.fillStyle = `rgba(245, 245, 250, 0.9)`;
+                ctx.fill();
+                ctx.shadowBlur = 0;
+                if (n.glow > 0.1) {
+                    ctx.beginPath();
+                    ctx.arc(n.x, n.y, rad*2.1, 0, Math.PI*2);
+                    ctx.fillStyle = `rgba(180,180,190,0.12)`;
+                    ctx.fill();
+                }
+            }
+            // data packet flow (monochrome)
+            for (let p of dataPackets) {
+                const fromNode = nodes[p.fromIdx];
+                const toNode = nodes[p.toIdx];
+                if (!fromNode || !toNode) {
+                    if(edges.length){
+                        const newEdge = edges[Math.floor(Math.random() * edges.length)];
+                        p.fromIdx = newEdge.from;
+                        p.toIdx = newEdge.to;
+                    }
+                    continue;
+                }
+                p.progress += p.speed;
+                if (p.progress >= 1) {
+                    p.progress = 0;
+                    if (edges.length && Math.random() < 0.35) {
+                        const newEdge = edges[Math.floor(Math.random() * edges.length)];
+                        p.fromIdx = newEdge.from;
+                        p.toIdx = newEdge.to;
+                    }
+                }
+                const t = p.progress;
+                const x = fromNode.x + (toNode.x - fromNode.x) * t;
+                const y = fromNode.y + (toNode.y - fromNode.y) * t;
+                ctx.beginPath();
+                ctx.arc(x, y, p.size + Math.sin(Date.now()*0.01)*0.25, 0, Math.PI*2);
+                ctx.fillStyle = `rgba(225, 225, 230, 0.95)`;
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = `rgba(160,160,170,0.8)`;
+                ctx.fill();
+            }
+            ctx.shadowBlur = 0;
+            requestAnimationFrame(animateNetwork);
+        }
+        resizeCanvas();
+        animateNetwork();
+        console.log("⚫ Black & White Edition | Business Development Focus | No 'portfolio' references | Monochrome Tech Visuals");
+    })();
+</script>
 </body>
 </html>
